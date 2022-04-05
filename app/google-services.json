@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "784694790345",
+    "project_id": "studit-b2d9b",
+    "storage_bucket": "studit-b2d9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784694790345:android:e6070c64df19cb649e2518",
+        "android_client_info": {
+          "package_name": "com.snotshot.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784694790345-ai5vaq01nnur87889h4q5duasnric75l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo9pnmX723b1jFm07nLiramG-PdthvfWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784694790345-ai5vaq01nnur87889h4q5duasnric75l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
