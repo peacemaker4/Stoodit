@@ -3,19 +3,28 @@ package com.snotshot.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.snotshot.myapplication.databinding.ActivityRegisterBinding
+import com.snotshot.myapplication.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity() {
 
     //View binding
-    private lateinit var binding: ActivityRegisterBinding
+    private lateinit var binding: ActivityWelcomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
-//        startActivity(Intent(this, RegisterActivity::class.java))
+
+        // Register
+        binding.signUpBtn.setOnClickListener{
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
+
+        // Login
+        binding.signInBtn.setOnClickListener{
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
     }
 }

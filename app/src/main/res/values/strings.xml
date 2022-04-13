@@ -10,4 +10,12 @@
     <string name="menu_home">Home</string>
     <string name="profile">Profile</string>
     <string name="menu_profile">Profile</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="intro">Welcome, stoodent</string>
+    <string name="sign_in">sign in</string>
+    <string name="sign_up">sign up</string>
+
+    <string name="login">Login</string>
 </resources>
