@@ -50,10 +50,15 @@ class RegisterActivity : AppCompatActivity() {
 
         //init firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
+        checkUser()
 
         //register button click
         binding.registerBtn.setOnClickListener{
             validateData();
+        }
+        //sign in link click
+        binding.signInLink.setOnClickListener{
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
     private fun validateData(){
@@ -118,5 +123,14 @@ class RegisterActivity : AppCompatActivity() {
 
                 Toast.makeText(this, "Register failed due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun checkUser() {
+        //if user is already logged in go to main activity
+        val firebaseUser = firebaseAuth.currentUser
+        if(firebaseUser != null){
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
     }
 }

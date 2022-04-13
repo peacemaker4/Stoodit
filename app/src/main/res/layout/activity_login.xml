@@ -28,8 +28,8 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:background="#00000000"
-      android:text="Studit logo?"
-      android:textColor="#000000"
+      android:text="Stoodit!"
+      android:textColor="#2196F3"
       android:textSize="30sp"
       android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="parent"
@@ -67,7 +67,7 @@
       app:layout_constraintVertical_bias="0.050000012" />
 
   <Button
-      android:id="@+id/register_btn"
+      android:id="@+id/login_btn"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="Login"
@@ -81,9 +81,24 @@
       android:id="@+id/already_registered_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="New here? Sign up!"
+      android:text="New here?"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.4"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/register_btn"
+      app:layout_constraintVertical_bias="0.050000012" />
+
+  <TextView
+      android:id="@+id/sign_up_link"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Sign up!"
+      android:textColor="#673AB7"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.58"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/register_btn"
       app:layout_constraintVertical_bias="0.050000012" />
