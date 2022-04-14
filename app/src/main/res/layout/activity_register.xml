@@ -99,7 +99,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_confirm_input"
-        app:layout_constraintVertical_bias="0.100000024" />
+        app:layout_constraintVertical_bias="0.100000024"
+        android:backgroundTint="@color/purple_700"
+        />
 
     <TextView
         android:id="@+id/already_registered_text"

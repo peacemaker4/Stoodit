@@ -60,6 +60,7 @@
       android:ems="10"
       android:hint="Password"
       android:inputType="textPassword"
+      android:textColor="#000000"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +87,7 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.4"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/register_btn"
+      app:layout_constraintTop_toBottomOf="@+id/login_btn"
       app:layout_constraintVertical_bias="0.050000012" />
 
   <TextView
@@ -100,7 +101,7 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.58"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/register_btn"
+      app:layout_constraintTop_toBottomOf="@+id/login_btn"
       app:layout_constraintVertical_bias="0.050000012" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
