@@ -15,6 +15,9 @@ import com.snotshot.myapplication.R
 import com.snotshot.myapplication.databinding.FragmentProfileBinding
 import android.app.Activity
 import android.widget.Button
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 
 class ProfileFragment : Fragment() {
@@ -29,7 +32,12 @@ class ProfileFragment : Fragment() {
     //FirebaseAuth
     private lateinit var firebaseAuth: FirebaseAuth
 
+
+    private lateinit var databaseRef: DatabaseReference
+
+
     private var email = ""
+    private var name = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,6 +52,9 @@ class ProfileFragment : Fragment() {
 
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
+
+
+
 
         val textView: TextView = binding.textProfile
         profileViewModel.text.observe(viewLifecycleOwner, Observer {
