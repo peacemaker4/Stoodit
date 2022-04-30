@@ -3,6 +3,7 @@
     package="com.snotshot.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -34,7 +35,8 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.Studit.NoActionBar">
         </activity>
-
+        <activity android:name=".NoteFormActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

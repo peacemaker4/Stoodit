@@ -1,4 +1,4 @@
-package com.snotshot.myapplication.ui.profile
+package com.snotshot.myapplication.ui.notes
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,18 +12,18 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.snotshot.myapplication.LoginActivity
 import com.snotshot.myapplication.R
-import com.snotshot.myapplication.databinding.FragmentProfileBinding
 import android.app.Activity
 import android.widget.Button
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.snotshot.myapplication.NoteFormActivity
+import com.snotshot.myapplication.databinding.FragmentNotesBinding
+import com.snotshot.myapplication.ui.profile.NotesFragmentModel
 
 
-class ProfileFragment : Fragment() {
+class NotesFragment : Fragment() {
 
-    private lateinit var profileViewModel: NotesFragmentModel
-    private var _binding: FragmentProfileBinding? = null
+    private lateinit var notesViewModel: NotesFragmentModel
+    private var _binding: FragmentNotesBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -32,41 +32,32 @@ class ProfileFragment : Fragment() {
     //FirebaseAuth
     private lateinit var firebaseAuth: FirebaseAuth
 
-
-    private lateinit var databaseRef: DatabaseReference
-
-
     private var email = ""
-    private var name = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        profileViewModel =
+        notesViewModel =
             ViewModelProvider(this).get(NotesFragmentModel::class.java)
 
-        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        _binding = FragmentNotesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
-
-
-
         val textView: TextView = binding.textProfile
-        profileViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = email
+        notesViewModel.text.observe(viewLifecycleOwner, Observer {
+            textView.text = it
         })
 
-        //handle logout click
-        val logBtn = root.findViewById(R.id.logout_btn) as Button?
-        if (logBtn != null) {
-            logBtn.setOnClickListener(View.OnClickListener {
-                firebaseAuth.signOut()
-                checkUser()
+
+        val addBtn = root.findViewById(R.id.addNotesBtn) as FloatingActionButton?
+        if (addBtn != null) {
+            addBtn.setOnClickListener(View.OnClickListener {
+                binding.root.context.startActivity(Intent(binding.root.context, NoteFormActivity::class.java))
             })
         }
 
@@ -78,7 +69,6 @@ class ProfileFragment : Fragment() {
         val firebaseUser = firebaseAuth.currentUser
         if(firebaseUser != null){
             email = firebaseUser.email.toString();
-
         }
         else{
             binding.root.context.startActivity(Intent(binding.root.context, LoginActivity::class.java))

@@ -10,11 +10,10 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.snotshot.myapplication.databinding.ActivityRegisterBinding
-import com.snotshot.myapplication.ui.profile.User
+import com.snotshot.myapplication.models.User
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -34,24 +33,15 @@ class RegisterActivity : AppCompatActivity() {
     private var password = ""
     private var passwordConfirm = ""
 
-
-
-    //Database
-    private lateinit var database: FirebaseDatabase
-    private lateinit var databaseReference: DatabaseReference
-
-
+    //Firebase db
+    lateinit var database: DatabaseReference
+    private val url = "https://studit-b2d9b-default-rtdb.asia-southeast1.firebasedatabase.app"
+    private val path = "users"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-        //database
-        database = FirebaseDatabase.getInstance()
-        databaseReference = database.getReference("users")
-
 
         //configure ActionBar
         actionBar = supportActionBar!!
@@ -68,6 +58,8 @@ class RegisterActivity : AppCompatActivity() {
         //init firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
+
+        database = Firebase.database(url).reference
 
         //register button click
         binding.registerBtn.setOnClickListener{
@@ -117,7 +109,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun firebaseSignUp() {
-
         //progress bar show
 
         //account register
@@ -129,7 +120,14 @@ class RegisterActivity : AppCompatActivity() {
                 //get current user
                 val firebaseUser = firebaseAuth.currentUser
                 val email = firebaseUser!!.email
-                Toast.makeText(this, "Account created with an email $email", Toast.LENGTH_SHORT).show()
+
+                val user = User(firebaseUser!!.uid, username, email)
+
+                database.child(path).child(user.uid.toString()).setValue(user).addOnSuccessListener { e->
+                    Toast.makeText(this, "Account created with an email $email", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener{ e->
+                    Toast.makeText(this, "Error while creating the user: $e", Toast.LENGTH_SHORT).show()
+                }
 
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()

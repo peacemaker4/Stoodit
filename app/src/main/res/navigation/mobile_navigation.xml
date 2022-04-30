@@ -16,5 +16,9 @@
         android:name="com.snotshot.myapplication.ui.profile.ProfileFragment"
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
-
+    <fragment
+        android:id="@+id/nav_notes"
+        android:name="com.snotshot.myapplication.ui.notes.NotesFragment"
+        android:label="@string/notes_profile"
+        tools:layout="@layout/fragment_notes" />
 </navigation>

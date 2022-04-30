@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
 import com.snotshot.myapplication.databinding.ActivityLoginBinding
-import com.snotshot.myapplication.databinding.ActivityRegisterBinding
 
 class LoginActivity : AppCompatActivity() {
 
@@ -23,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private var email = ""
     private var password = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,6 +81,7 @@ class LoginActivity : AppCompatActivity() {
                 //get user info
                 val firebaseUser = firebaseAuth.currentUser
                 val email = firebaseUser!!.email
+
                 Toast.makeText(this, "Logged in as ${email} successfully!", Toast.LENGTH_SHORT).show()
                 //open main page
                 startActivity(Intent(this, MainActivity::class.java))
