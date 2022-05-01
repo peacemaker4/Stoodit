@@ -14,10 +14,19 @@ import com.snotshot.myapplication.LoginActivity
 import com.snotshot.myapplication.R
 import com.snotshot.myapplication.databinding.FragmentProfileBinding
 import android.app.Activity
+import android.content.ContentValues.TAG
+import android.graphics.Color
+import android.util.Log
 import android.widget.Button
+import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.snotshot.myapplication.models.User
 
 
 class ProfileFragment : Fragment() {
@@ -32,9 +41,10 @@ class ProfileFragment : Fragment() {
     //FirebaseAuth
     private lateinit var firebaseAuth: FirebaseAuth
 
-
-    private lateinit var databaseRef: DatabaseReference
-
+    //Firebase db
+    lateinit var database: DatabaseReference
+    private val url = "https://studit-b2d9b-default-rtdb.asia-southeast1.firebasedatabase.app"
+    private val path = "users"
 
     private var email = ""
     private var name = ""
@@ -53,13 +63,31 @@ class ProfileFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
-
-
+        val firebaseUser = firebaseAuth.currentUser
+        if (firebaseUser != null) {
+            database = Firebase.database(url).reference.child(path).child(firebaseUser.uid)
+        }
+        var user = User()
 
         val textView: TextView = binding.textProfile
-        profileViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = email
-        })
+
+        val userListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                user = dataSnapshot.getValue<User>()!!
+                binding.textProfile.setBackgroundColor(Color.WHITE)
+                binding.loadingBar.visibility = View.GONE
+                profileViewModel.text.observe(viewLifecycleOwner, Observer {
+                    textView.text = user.username
+                })
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        database.addValueEventListener(userListener)
+
+
 
         //handle logout click
         val logBtn = root.findViewById(R.id.logout_btn) as Button?

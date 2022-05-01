@@ -4,19 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.NotesFragment"
+    tools:context=".ui.notes.NotesFragment"
     >
 
     <TextView
         android:id="@+id/text_profile"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:background="#99EAEAEA"
+        android:fontFamily="@font/montserrat_semibold"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,5 +77,18 @@
         app:strokeWidth="2dp">
 
     </com.google.android.material.imageview.ShapeableImageView>
+
+    <ProgressBar
+        android:id="@+id/loadingBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
+        app:layout_constraintBottom_toBottomOf="@+id/text_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toEndOf="@+id/text_profile"
+        app:layout_constraintTop_toTopOf="@+id/text_profile"
+        android:indeterminateTint="@color/welcome_page_btn"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
