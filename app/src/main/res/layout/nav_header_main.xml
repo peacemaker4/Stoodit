@@ -29,7 +29,8 @@
         android:text="@string/nav_header_title"
         android:textColor="@color/welcome_page_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        tools:text="Stoodit" />
+        tools:text="User"
+        android:fontFamily="@font/montserrat_bold"/>
 
     <TextView
         android:id="@+id/textView"
