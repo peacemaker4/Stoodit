@@ -32,6 +32,8 @@ class LoginActivity : AppCompatActivity() {
         //configure action bar
         actionBar = supportActionBar!!
         actionBar.title = "Login"
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(true)
 
         //configure progress dialog
         progressDialog = ProgressDialog(this)
@@ -92,6 +94,11 @@ class LoginActivity : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Login failed due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
     }
 
     private fun checkUser() {

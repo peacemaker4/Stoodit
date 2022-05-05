@@ -1,7 +1,11 @@
-package com.snotshot.myapplication.ui.notes
+package com.snotshot.myapplication.ui.courses
 
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +13,10 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.auth.FirebaseAuth
-import com.snotshot.myapplication.LoginActivity
-import com.snotshot.myapplication.R
-import android.app.Activity
-import android.content.ContentValues
-import android.graphics.Color
-import android.util.Log
-import android.widget.Button
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -25,31 +24,22 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.snotshot.myapplication.CourseFormActivity
+import com.snotshot.myapplication.LoginActivity
 import com.snotshot.myapplication.NoteFormActivity
-import com.snotshot.myapplication.databinding.FragmentNotesBinding
-import com.snotshot.myapplication.models.Note
-import com.snotshot.myapplication.models.User
-import com.snotshot.myapplication.ui.profile.NotesFragmentModel
-import android.R.string.no
-import android.annotation.SuppressLint
-import android.widget.ArrayAdapter
-import android.widget.Toast
-import android.R.string.no
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.androidnetworking.AndroidNetworking
-import com.snotshot.myapplication.adapters.ArticleAdapter
+import com.snotshot.myapplication.R
+import com.snotshot.myapplication.adapters.CoursesAdapter
 import com.snotshot.myapplication.adapters.NoteAdapter
-import com.snotshot.myapplication.models.Article
+import com.snotshot.myapplication.databinding.FragmentCoursesBinding
+import com.snotshot.myapplication.databinding.FragmentHomeBinding
+import com.snotshot.myapplication.models.Course
+import com.snotshot.myapplication.models.Note
 
+class CoursesFragment : Fragment() {
 
-class NotesFragment : Fragment() {
+    private lateinit var coursesFragmentModel: CoursesFragmentModel
+    private var _binding: FragmentCoursesBinding? = null
 
-    private lateinit var notesViewModel: NotesFragmentModel
-    private var _binding: FragmentNotesBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     //FirebaseAuth
@@ -58,31 +48,31 @@ class NotesFragment : Fragment() {
     //Firebase db
     lateinit var database: DatabaseReference
     private val url = "https://studit-b2d9b-default-rtdb.asia-southeast1.firebasedatabase.app"
-    private val path = "notes"
+    private val path = "courses"
 
     private var email = ""
 
-    private var noteAdapter: NoteAdapter? = null
+    private var coursesAdapter: CoursesAdapter? = null
     private var recyclerView: RecyclerView? = null
 
-    private var notesList: ArrayList<Note>? = null
+    private var coursesList: ArrayList<Course>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notesViewModel =
-            ViewModelProvider(this).get(NotesFragmentModel::class.java)
+        coursesFragmentModel =
+            ViewModelProvider(this).get(CoursesFragmentModel::class.java)
 
-        _binding = FragmentNotesBinding.inflate(inflater, container, false)
+        _binding = FragmentCoursesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
-        val textView: TextView = binding.textProfile
-        notesViewModel.text.observe(viewLifecycleOwner, Observer {
+        val textView: TextView = binding.textCourses
+        coursesFragmentModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
 
@@ -91,23 +81,23 @@ class NotesFragment : Fragment() {
             database = Firebase.database(url).reference.child(path).child(firebaseUser.uid)
         }
 
-        recyclerView = binding.notesList
+        recyclerView = binding.coursesList
         recyclerView!!.setLayoutManager(LinearLayoutManager(binding.root.context))
 
-        notesList = ArrayList()
+        coursesList = ArrayList()
 
         val notesListener = object : ValueEventListener {
             @SuppressLint("ResourceType")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                notesList = ArrayList()
+                coursesList = ArrayList()
                 for (noteSnapshot in dataSnapshot.getChildren()) {
-                    var note = noteSnapshot.getValue<Note>()!!
-                    notesList!!.add(note)
+                    var course = noteSnapshot.getValue<Course>()!!
+                    coursesList!!.add(course)
                 }
 
                 binding.progressBar.visibility = View.GONE
-                noteAdapter = NoteAdapter(notesList!!)
-                recyclerView!!.adapter = noteAdapter
+                coursesAdapter = CoursesAdapter(coursesList!!)
+                recyclerView!!.adapter = coursesAdapter
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -116,11 +106,10 @@ class NotesFragment : Fragment() {
         }
         database.addValueEventListener(notesListener)
 
-
-        val addBtn = root.findViewById(R.id.addNotesBtn) as FloatingActionButton?
+        val addBtn = root.findViewById(R.id.addCourseBtn) as FloatingActionButton?
         if (addBtn != null) {
             addBtn.setOnClickListener(View.OnClickListener {
-                binding.root.context.startActivity(Intent(binding.root.context, NoteFormActivity::class.java))
+                binding.root.context.startActivity(Intent(binding.root.context, CourseFormActivity::class.java))
             })
 
         }

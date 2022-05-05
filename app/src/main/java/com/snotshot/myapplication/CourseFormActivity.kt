@@ -19,13 +19,15 @@ import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.internal.ContextUtils.getActivity
+import com.snotshot.myapplication.databinding.ActivityCourseFormBinding
+import com.snotshot.myapplication.models.Course
 import com.snotshot.myapplication.models.Note
 import com.snotshot.myapplication.models.User
 import com.snotshot.myapplication.ui.notes.NotesFragment
 
 
-class NoteFormActivity: AppCompatActivity() {
-    private lateinit var binding: ActivityNoteFormBinding
+class CourseFormActivity: AppCompatActivity() {
+    private lateinit var binding: ActivityCourseFormBinding
 
     //ActionBar
     private lateinit var actionBar: ActionBar
@@ -36,18 +38,20 @@ class NoteFormActivity: AppCompatActivity() {
     //Firebase db
     lateinit var database: DatabaseReference
     private val url = "https://studit-b2d9b-default-rtdb.asia-southeast1.firebasedatabase.app"
-    private val path = "notes"
+    private val path = "courses"
 
     private var subject = ""
-    private var note = ""
+    private var credit = ""
+    private var total = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityNoteFormBinding.inflate(layoutInflater)
+        binding = ActivityCourseFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         actionBar = supportActionBar!!
-        actionBar.title = "New Note"
+        actionBar.title = "New Course"
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.setDisplayShowHomeEnabled(true)
 
@@ -63,17 +67,18 @@ class NoteFormActivity: AppCompatActivity() {
 
     private fun validateData(){
         subject = binding.subjectInput.text.toString().trim()
-        note = binding.noteInput.text.toString().trim()
-        addNote()
+        credit = binding.creditInput.text.toString().trim()
+        total = binding.totalInput.text.toString().trim()
+        addCourse()
     }
 
-    private fun addNote(){
+    private fun addCourse(){
         val firebaseUser = firebaseAuth.currentUser
 
-        val note = Note(subject, note)
+        val course = Course(subject, credit, total)
 
-        database.child(path).child(firebaseUser!!.uid).push().setValue(note).addOnSuccessListener { e->
-            Toast.makeText(this, "Note been added", Toast.LENGTH_SHORT).show()
+        database.child(path).child(firebaseUser!!.uid).push().setValue(course).addOnSuccessListener { e->
+            Toast.makeText(this, "Course been added", Toast.LENGTH_SHORT).show()
             onBackPressed()
         }.addOnFailureListener{ e->
             Toast.makeText(this, "Error while adding the note: $e", Toast.LENGTH_SHORT).show()
@@ -84,6 +89,5 @@ class NoteFormActivity: AppCompatActivity() {
         onBackPressed()
         return super.onSupportNavigateUp()
     }
-
 
 }

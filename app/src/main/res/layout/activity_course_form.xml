@@ -24,26 +24,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.060000002" />
 
+
     <EditText
-        android:id="@+id/note_input"
+        android:id="@+id/creditInput"
         android:layout_width="350dp"
-        android:layout_height="300dp"
+        android:layout_height="48dp"
         android:background="@drawable/edit_text_border_white"
         android:ems="10"
-        android:gravity="start|top"
-        android:hint="Note"
-        android:inputType="textMultiLine"
-        android:paddingTop="15dp"
+        android:hint="Credits"
+        android:inputType="number"
         android:textAlignment="viewStart"
         android:textColor="#000000"
         android:textColorHint="#555555"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subject_input"
         app:layout_constraintVertical_bias="0.050000012" />
 
+    <EditText
+        android:id="@+id/totalInput"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:background="@drawable/edit_text_border_white"
+        android:ems="10"
+        android:hint="Total"
+        android:inputType="number"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
+        android:textColorHint="#555555"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/creditInput"
+        app:layout_constraintVertical_bias="0.050000012" />
 
     <Button
         android:id="@+id/addNotesBtn"
@@ -55,8 +71,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/note_input"
+        app:layout_constraintTop_toBottomOf="@+id/totalInput"
         app:layout_constraintVertical_bias="0.050000012" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

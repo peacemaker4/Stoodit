@@ -18,4 +18,6 @@
     <string name="login">Login</string>
     <string name="notes">Notes</string>
     <string name="notes_profile">Notes</string>
+    <string name="courses">Courses</string>
+    <string name="fragment_courses">Courses</string>
 </resources>

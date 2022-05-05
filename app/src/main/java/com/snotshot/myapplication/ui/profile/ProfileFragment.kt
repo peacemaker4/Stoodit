@@ -18,7 +18,6 @@ import android.content.ContentValues.TAG
 import android.graphics.Color
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -26,6 +25,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.snotshot.myapplication.MainActivity
 import com.snotshot.myapplication.models.User
 
 
@@ -47,7 +47,6 @@ class ProfileFragment : Fragment() {
     private val path = "users"
 
     private var email = ""
-    private var name = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -74,11 +73,13 @@ class ProfileFragment : Fragment() {
         val userListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 user = dataSnapshot.getValue<User>()!!
-                binding.textProfile.setBackgroundColor(Color.WHITE)
-                binding.loadingBar.visibility = View.GONE
-                profileViewModel.text.observe(viewLifecycleOwner, Observer {
-                    textView.text = user.username
-                })
+                if(_binding != null){
+                    binding.textProfile.setBackgroundColor(Color.WHITE)
+                    binding.loadingBar.visibility = View.GONE
+                    profileViewModel.text.observe(viewLifecycleOwner, Observer {
+                        textView.text = user.username
+                    })
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -86,8 +87,6 @@ class ProfileFragment : Fragment() {
             }
         }
         database.addValueEventListener(userListener)
-
-
 
         //handle logout click
         val logBtn = root.findViewById(R.id.logout_btn) as Button?

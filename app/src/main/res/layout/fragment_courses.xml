@@ -2,15 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.notes.NotesFragment"
-    android:background="@color/white"
-    >
+    tools:context=".ui.courses.CoursesFragment"
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text_profile"
+        android:id="@+id/text_courses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -26,7 +23,7 @@
         app:layout_constraintVertical_bias="0.01999998" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addNotesBtn"
+        android:id="@+id/addCourseBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
@@ -43,6 +40,17 @@
 
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/coursesList"
+        android:layout_width="409dp"
+        android:layout_height="469dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_courses" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
@@ -50,20 +58,8 @@
         android:layout_height="60dp"
         android:indeterminateTint="@color/welcome_page_btn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/notesList"
-        app:layout_constraintStart_toStartOf="@+id/notesList"
-        app:layout_constraintTop_toBottomOf="@+id/text_profile" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:id="@+id/notesList"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_profile" />
-
+        app:layout_constraintEnd_toEndOf="@+id/coursesList"
+        app:layout_constraintStart_toStartOf="@+id/coursesList"
+        app:layout_constraintTop_toBottomOf="@+id/text_courses" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

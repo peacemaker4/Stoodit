@@ -21,4 +21,9 @@
         android:name="com.snotshot.myapplication.ui.notes.NotesFragment"
         android:label="@string/notes_profile"
         tools:layout="@layout/fragment_notes" />
+    <fragment
+        android:id="@+id/nav_courses"
+        android:name="com.snotshot.myapplication.ui.courses.CoursesFragment"
+        android:label="@string/fragment_courses"
+        tools:layout="@layout/fragment_courses" />
 </navigation>

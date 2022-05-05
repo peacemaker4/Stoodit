@@ -36,6 +36,13 @@
             android:theme="@style/Theme.Studit.NoActionBar">
         </activity>
         <activity android:name=".NoteFormActivity"
+            android:label="New Note"
+            android:exported="true"/>
+        <activity android:name=".NewsActivity"
+            android:exported="true"/>
+        <activity android:name=".WebActivity"
+            android:exported="true"/>
+        <activity android:name=".CourseFormActivity"
             android:exported="true"/>
     </application>
 

@@ -5,12 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.snotshot.myapplication.LoginActivity
-import com.snotshot.myapplication.R
+import com.snotshot.myapplication.NewsActivity
 import com.snotshot.myapplication.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -41,6 +40,11 @@ class HomeFragment : Fragment() {
 //        homeViewModel.text.observe(viewLifecycleOwner, Observer {
 //            textView.text = it
 //        })
+
+        binding.imageView7.setOnClickListener{
+            binding.root.context.startActivity(Intent(binding.root.context, NewsActivity::class.java))
+        }
+
         return root
     }
 
