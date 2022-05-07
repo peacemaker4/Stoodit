@@ -44,6 +44,8 @@
             android:exported="true"/>
         <activity android:name=".CourseFormActivity"
             android:exported="true"/>
+        <activity android:name=".ProfileEditActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

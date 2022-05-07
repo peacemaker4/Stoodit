@@ -121,7 +121,7 @@ class RegisterActivity : AppCompatActivity() {
                 val firebaseUser = firebaseAuth.currentUser
                 val email = firebaseUser!!.email
 
-                val user = User(firebaseUser!!.uid, username, email)
+                val user = User(firebaseUser!!.uid, username, email, "None", "", "", "")
 
                 database.child(path).child(user.uid.toString()).setValue(user).addOnSuccessListener { e->
                     Toast.makeText(this, "Account created with an email $email", Toast.LENGTH_SHORT).show()

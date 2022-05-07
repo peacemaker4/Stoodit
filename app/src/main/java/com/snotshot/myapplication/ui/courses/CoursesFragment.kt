@@ -94,10 +94,11 @@ class CoursesFragment : Fragment() {
                     var course = noteSnapshot.getValue<Course>()!!
                     coursesList!!.add(course)
                 }
-
-                binding.progressBar.visibility = View.GONE
-                coursesAdapter = CoursesAdapter(coursesList!!)
-                recyclerView!!.adapter = coursesAdapter
+                if(_binding != null) {
+                    binding.progressBar.visibility = View.GONE
+                    coursesAdapter = CoursesAdapter(coursesList!!)
+                    recyclerView!!.adapter = coursesAdapter
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

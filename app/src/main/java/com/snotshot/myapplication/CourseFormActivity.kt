@@ -69,7 +69,19 @@ class CourseFormActivity: AppCompatActivity() {
         subject = binding.subjectInput.text.toString().trim()
         credit = binding.creditInput.text.toString().trim()
         total = binding.totalInput.text.toString().trim()
-        addCourse()
+
+        if(TextUtils.isEmpty(subject)){
+            binding.subjectInput.error = "Enter subject"
+        }
+        else if(TextUtils.isEmpty(credit)){
+            binding.creditInput.error = "Enter credits amount"
+        }
+        else if(TextUtils.isEmpty(total)){
+            binding.totalInput.error = "Enter total"
+        }
+        else{
+            addCourse()
+        }
     }
 
     private fun addCourse(){

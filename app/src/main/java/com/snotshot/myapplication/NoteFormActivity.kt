@@ -64,7 +64,13 @@ class NoteFormActivity: AppCompatActivity() {
     private fun validateData(){
         subject = binding.subjectInput.text.toString().trim()
         note = binding.noteInput.text.toString().trim()
-        addNote()
+
+        if(TextUtils.isEmpty(subject)){
+            binding.subjectInput.error = "Enter subject"
+        }
+        else{
+            addNote()
+        }
     }
 
     private fun addNote(){

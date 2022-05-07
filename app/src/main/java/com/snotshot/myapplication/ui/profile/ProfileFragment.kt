@@ -18,6 +18,9 @@ import android.content.ContentValues.TAG
 import android.graphics.Color
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.Toast
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -26,6 +29,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.snotshot.myapplication.MainActivity
+import com.snotshot.myapplication.ProfileEditActivity
 import com.snotshot.myapplication.models.User
 
 
@@ -79,6 +83,36 @@ class ProfileFragment : Fragment() {
                     profileViewModel.text.observe(viewLifecycleOwner, Observer {
                         textView.text = user.username
                     })
+                    if(user.university!!.length > 0) {
+                        binding.universityText.visibility = View.VISIBLE
+                        binding.universityText.text = user.university
+                    }
+                    else{
+                        binding.universityText.visibility = View.GONE
+                    }
+                    if(user.group!!.length > 0) {
+                        binding.groupText.visibility = View.VISIBLE
+                        binding.groupText.text = user.group
+                    }
+                    else{
+                        binding.groupText.visibility = View.GONE
+                    }
+                    if(user.year!!.length > 0) {
+                        binding.yearText.visibility = View.VISIBLE
+                        binding.yearText.text = user.year + " year"
+                    }
+                    else{
+                        binding.yearText.visibility = View.GONE
+                    }
+                    if(user.description!!.length > 0){
+                        binding.descriptionText.visibility = View.VISIBLE
+                        binding.descriptionText.text = user.description
+                    }
+                    else{
+                        binding.descriptionText.visibility = View.GONE
+                        binding.descriptionText.text = ""
+                    }
+                    binding.editBtn.isEnabled = true
                 }
             }
 
@@ -94,6 +128,12 @@ class ProfileFragment : Fragment() {
             logBtn.setOnClickListener(View.OnClickListener {
                 firebaseAuth.signOut()
                 checkUser()
+            })
+        }
+        val editBtn = root.findViewById(R.id.edit_btn) as MaterialButton?
+        if (editBtn != null) {
+            editBtn.setOnClickListener(View.OnClickListener {
+                binding.root.context.startActivity(Intent(binding.root.context, ProfileEditActivity::class.java))
             })
         }
 
