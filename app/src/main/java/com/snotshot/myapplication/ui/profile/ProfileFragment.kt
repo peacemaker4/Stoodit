@@ -1,5 +1,6 @@
 package com.snotshot.myapplication.ui.profile
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.snotshot.myapplication.LoginActivity
 import com.snotshot.myapplication.R
 import com.snotshot.myapplication.databinding.FragmentProfileBinding
 import android.app.Activity
+import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.graphics.Color
 import android.util.Log
@@ -30,6 +32,8 @@ import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.snotshot.myapplication.MainActivity
 import com.snotshot.myapplication.ProfileEditActivity
+import com.snotshot.myapplication.adapters.CoursesAdapter
+import com.snotshot.myapplication.models.Course
 import com.snotshot.myapplication.models.User
 
 
@@ -46,9 +50,13 @@ class ProfileFragment : Fragment() {
     private lateinit var firebaseAuth: FirebaseAuth
 
     //Firebase db
-    lateinit var database: DatabaseReference
+    private lateinit var database: DatabaseReference
     private val url = "https://studit-b2d9b-default-rtdb.asia-southeast1.firebasedatabase.app"
     private val path = "users"
+
+    // for count gpa
+    private val gpaPath = "courses"
+    lateinit var coursesDatabase: DatabaseReference
 
     private var email = ""
 
@@ -69,6 +77,8 @@ class ProfileFragment : Fragment() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser != null) {
             database = Firebase.database(url).reference.child(path).child(firebaseUser.uid)
+            coursesDatabase = Firebase.database(url).reference.child(gpaPath).child(firebaseUser.uid)
+
         }
         var user = User()
 
@@ -121,6 +131,43 @@ class ProfileFragment : Fragment() {
             }
         }
         database.addValueEventListener(userListener)
+
+        val notesListener = object : ValueEventListener {
+            @SuppressLint("ResourceType", "SetTextI18n")
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                var total: Double = 0.0
+                var credits: Int = 0
+                for (noteSnapshot in dataSnapshot.children) {
+                    val course = noteSnapshot.getValue<Course>()!!
+                    val score =  course.total?.toDouble()!!
+                    credits += course.credit?.toInt()!!
+                    when {
+                        score>=95 -> total += 4 * course.credit.toInt()
+                        score>=90 -> total += 3.67 * course.credit.toInt()
+                        score>=85 -> total += 3.33 * course.credit.toInt()
+                        score>=80 -> total += 3 * course.credit.toInt()
+                        score>=75 -> total += 2.67 * course.credit.toInt()
+                        score>=70 -> total += 2.33 * course.credit.toInt()
+                        score>=65 -> total += 2 * course.credit.toInt()
+                        score>=60 -> total += 1.67 * course.credit.toInt()
+                        score>=55 -> total += 1.33 * course.credit.toInt()
+                        score>=50 -> total += 1 * course.credit.toInt()
+                    }
+                }
+                if(_binding != null) {
+                    if(credits!=0) total /= credits
+                    else total = 0.0
+
+                    binding.gpaText.text = "GPA: " + "%.2f".format(total)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w(ContentValues.TAG, "gpa ", databaseError.toException())
+            }
+        }
+        coursesDatabase.addValueEventListener(notesListener)
+
 
         //handle logout click
         val logBtn = root.findViewById(R.id.logout_btn) as Button?

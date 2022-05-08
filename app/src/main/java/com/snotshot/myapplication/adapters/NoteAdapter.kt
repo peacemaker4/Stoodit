@@ -10,7 +10,6 @@ import android.content.Intent
 import android.view.View
 import com.snotshot.myapplication.WebActivity
 import android.widget.TextView
-import com.androidnetworking.widget.ANImageView
 import com.snotshot.myapplication.models.Note
 import java.util.ArrayList
 

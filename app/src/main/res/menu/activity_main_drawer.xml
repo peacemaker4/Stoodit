@@ -20,6 +20,5 @@
             android:id="@+id/nav_notes"
             android:icon="@drawable/ic_menu_notes"
             android:title="@string/notes" />
-
     </group>
 </menu>

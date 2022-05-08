@@ -90,8 +90,8 @@ class CoursesFragment : Fragment() {
             @SuppressLint("ResourceType")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 coursesList = ArrayList()
-                for (noteSnapshot in dataSnapshot.getChildren()) {
-                    var course = noteSnapshot.getValue<Course>()!!
+                for (noteSnapshot in dataSnapshot.children) {
+                    val course = noteSnapshot.getValue<Course>()!!
                     coursesList!!.add(course)
                 }
                 if(_binding != null) {
