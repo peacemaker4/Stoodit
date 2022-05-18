@@ -38,12 +38,17 @@
         <activity android:name=".NoteFormActivity"
             android:label="New Note"
             android:exported="true"/>
+        <activity android:name=".NoteEditActivity"
+            android:exported="true"
+            />
         <activity android:name=".NewsActivity"
             android:exported="true"/>
         <activity android:name=".WebActivity"
             android:exported="true"
             android:parentActivityName=".NewsActivity"/>
         <activity android:name=".CourseFormActivity"
+            android:exported="true"/>
+        <activity android:name=".CourseEditActivity"
             android:exported="true"/>
         <activity android:name=".ProfileEditActivity"
             android:exported="true"/>

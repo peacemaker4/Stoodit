@@ -38,19 +38,18 @@
         android:singleLine="false"
         android:background="@drawable/transparent"
         android:inputType="textMultiLine"
-        android:paddingTop="20dp"
+        android:paddingTop="18dp"
         android:textAlignment="viewStart"
         android:textColor="#000000"
+        android:textSize="16dp"
         android:textColorHint="@color/gray"
         android:fontFamily="@font/montserrat"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subject_input"
         app:layout_constraintVertical_bias="0.050000012" />
-
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNotesBtn"

@@ -7,17 +7,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <EditText
         android:id="@+id/subject_input"
         android:layout_width="350dp"
         android:layout_height="48dp"
-        android:background="@drawable/edit_text_border_white"
+        android:background="@drawable/rounded_border_gray"
         android:ems="10"
-        android:hint="Subject"
+        android:hint="Name"
         android:inputType="text"
         android:textAlignment="viewStart"
         android:textColor="#000000"
-        android:textColorHint="#555555"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,44 +28,86 @@
 
     <EditText
         android:id="@+id/creditInput"
-        android:layout_width="350dp"
+        android:layout_width="150dp"
         android:layout_height="48dp"
-        android:background="@drawable/edit_text_border_white"
+        android:background="@drawable/rounded_border_gray"
         android:ems="10"
-        android:hint="Credits"
+        android:hint="Amount"
         android:inputType="number"
         android:textAlignment="viewStart"
         android:textColor="#000000"
-        android:textColorHint="#555555"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/subject_input"
         app:layout_constraintTop_toBottomOf="@+id/subject_input"
         app:layout_constraintVertical_bias="0.050000012" />
 
     <EditText
         android:id="@+id/totalInput"
-        android:layout_width="350dp"
+        android:layout_width="175dp"
         android:layout_height="48dp"
-        android:background="@drawable/edit_text_border_white"
+        android:background="@drawable/rounded_border_gray"
         android:ems="10"
-        android:hint="Total"
+        android:hint="%"
         android:inputType="number"
         android:textAlignment="viewStart"
         android:textColor="#000000"
-        android:textColorHint="#555555"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintEnd_toEndOf="@+id/subject_input"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creditInput"
+        app:layout_constraintTop_toBottomOf="@+id/subject_input"
         app:layout_constraintVertical_bias="0.050000012" />
 
-    <Button
-        android:id="@+id/addNotesBtn"
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/gray"
+        android:text="Subject"
+        app:layout_constraintBottom_toTopOf="@+id/subject_input"
+        app:layout_constraintEnd_toEndOf="@+id/subject_input"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="@+id/subject_input"
+        app:layout_constraintTop_toTopOf="@+id/subject_input">
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/gray"
+        android:text="Credit"
+        app:layout_constraintBottom_toTopOf="@+id/creditInput"
+        app:layout_constraintEnd_toEndOf="@+id/creditInput"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="@+id/creditInput"
+        app:layout_constraintTop_toTopOf="@+id/creditInput"></TextView>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/gray"
+        android:text="Total"
+        app:layout_constraintBottom_toTopOf="@+id/totalInput"
+        app:layout_constraintEnd_toEndOf="@+id/totalInput"
+        app:layout_constraintHorizontal_bias="0.10"
+        app:layout_constraintStart_toStartOf="@+id/totalInput"
+        app:layout_constraintTop_toTopOf="@+id/totalInput"></TextView>
+
+    <Button
+        android:id="@+id/addCourseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_border_gray"
         android:backgroundTint="@color/welcome_page_btn"
         android:drawableRight="@drawable/ic_icon_add"
         android:text="Add"

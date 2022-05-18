@@ -1,32 +1,30 @@
 package com.snotshot.myapplication
 
-import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
+import com.google.android.material.navigation.NavigationView
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.snotshot.myapplication.databinding.ActivityNoteFormBinding
-import android.R
-import android.app.ProgressDialog
-import android.opengl.Visibility
-import android.text.TextUtils
-import android.util.Patterns
-import android.view.View
-import androidx.appcompat.app.ActionBar
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.google.android.material.internal.ContextUtils.getActivity
 import com.snotshot.myapplication.databinding.ActivityCourseFormBinding
+import com.snotshot.myapplication.databinding.ActivityMainBinding
 import com.snotshot.myapplication.models.Course
-import com.snotshot.myapplication.models.Note
-import com.snotshot.myapplication.models.User
-import com.snotshot.myapplication.ui.notes.NotesFragment
 
 
-class CourseFormActivity: AppCompatActivity() {
+class CourseEditActivity: AppCompatActivity() {
     private lateinit var binding: ActivityCourseFormBinding
 
     //ActionBar
@@ -34,6 +32,7 @@ class CourseFormActivity: AppCompatActivity() {
 
 
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firebaseUser: FirebaseUser
 
     //Firebase db
     lateinit var database: DatabaseReference
@@ -43,6 +42,7 @@ class CourseFormActivity: AppCompatActivity() {
     private var subject = ""
     private var credit = ""
     private var total = ""
+    private var uid = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,8 +55,24 @@ class CourseFormActivity: AppCompatActivity() {
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.setDisplayShowHomeEnabled(true)
 
+        val extras = intent.extras
+        if (extras != null) {
+            subject = extras.getString("subject").toString()
+            credit = extras.getString("credit").toString()
+            total = extras.getString("total").toString()
+            uid = extras.getString("uid").toString()
+
+            binding.subjectInput.setText(subject)
+            binding.creditInput.setText(credit)
+            binding.totalInput.setText(total)
+        }
+
+        binding.addCourseBtn.setText("Save")
+        binding.addCourseBtn.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_icon_done, 0)
+
 
         firebaseAuth = FirebaseAuth.getInstance()
+        firebaseUser = firebaseAuth.currentUser!!
         database = Firebase.database(url).reference
 
         binding.addCourseBtn.setOnClickListener{
@@ -85,11 +101,9 @@ class CourseFormActivity: AppCompatActivity() {
     }
 
     private fun addCourse(){
-        val firebaseUser = firebaseAuth.currentUser
-
         val course = Course(subject, credit.toInt(), total.toInt())
 
-        database.child(path).child(firebaseUser!!.uid).push().setValue(course).addOnSuccessListener { e->
+        database.child(path).child(firebaseUser!!.uid).child(uid).setValue(course).addOnSuccessListener { e->
 //            Toast.makeText(this, "Course been added", Toast.LENGTH_SHORT).show()
             onBackPressed()
         }.addOnFailureListener{ e->
@@ -102,4 +116,21 @@ class CourseFormActivity: AppCompatActivity() {
         return super.onSupportNavigateUp()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(com.snotshot.myapplication.R.menu.note, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == com.snotshot.myapplication.R.id.action_delete){
+            database.child(path).child(firebaseUser!!.uid).child(uid).removeValue().addOnSuccessListener { e->
+                onBackPressed()
+            }.addOnFailureListener{ e->
+                Toast.makeText(this, "Unable to delete course: $e", Toast.LENGTH_SHORT).show()
+            }
+
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

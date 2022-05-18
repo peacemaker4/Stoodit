@@ -2,6 +2,7 @@ package com.snotshot.myapplication.extensions
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
 import android.util.AttributeSet
@@ -28,11 +29,10 @@ class LinedEditText(context: Context?, attrs: AttributeSet?) : androidx.appcompa
         super.onDraw(canvas)
     }
 
-    // we need this constructor for LayoutInflater
     init {
         mRect = Rect()
         mPaint = Paint()
         mPaint.style = Paint.Style.STROKE
-        mPaint.color = -0x7fffff01
+        mPaint.color = Color.parseColor("#DDDDDD")
     }
 }
