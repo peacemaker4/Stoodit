@@ -26,13 +26,14 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
         android:text="Yeah i learned that and that"
+        android:maxLines="4"
         android:textAlignment="textStart"
         android:textStyle="bold"
         android:textColor="@color/gray"
         android:paddingRight="5dp"
         android:paddingLeft="5dp"
         android:textAllCaps="false"
-        android:textSize="15sp" />
+        android:textSize="14sp" />
 
 
 

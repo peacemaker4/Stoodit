@@ -2,78 +2,61 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_border_gray"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:backgroundTint="@color/white"
+    >
 
     <TextView
         android:id="@+id/subject_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="calculus"
-        android:fontFamily="@font/montserrat_bold"
+        android:fontFamily="@font/montserrat_semibold"
         android:textAlignment="center"
-        android:textColor="@color/welcome_page_btn"
-        android:textSize="26sp"
+        android:textColor="@color/welcome_page_back"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:textAllCaps="true"
+        android:textAllCaps="false"
         />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
         <TextView
             android:id="@+id/credit_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
+            android:fontFamily="@font/montserrat"
             android:text="5"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
+            android:fontFamily="@font/montserrat"
             android:text="credits"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:paddingLeft="5dp"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
     <TextView
         android:id="@+id/total_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_bold"
+        android:fontFamily="@font/montserrat"
         android:text="100"
-        android:textColor="@color/welcome_page_btn"
+        android:textColor="@color/black"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textSize="22sp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="%"
-            android:textColor="@color/welcome_page_btn"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:paddingLeft="0dp"
-            android:textSize="22sp" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="10dp"
-        android:layout_height="1dp"
-        android:background="@color/welcome_page_btn"/>
+        android:textSize="18sp" />
 
 </LinearLayout>

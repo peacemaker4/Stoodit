@@ -35,7 +35,7 @@ import com.snotshot.myapplication.adapters.NoteAdapter
 import com.snotshot.myapplication.extensions.SpacesItemDecoration
 
 
-class NotesFragment : Fragment() {
+class NotesFragment : Fragment(){
 
     private lateinit var notesViewModel: NotesFragmentModel
     private var _binding: FragmentNotesBinding? = null
@@ -97,12 +97,13 @@ class NotesFragment : Fragment() {
                 notesList = ArrayList()
                 for (noteSnapshot in dataSnapshot.getChildren()) {
                     var note = noteSnapshot.getValue<Note>()!!
+                    note.uid = noteSnapshot.key
                     notesList!!.add(note)
                 }
                 notesList!!.reverse()
                 if(_binding != null) {
                     binding.progressBar.visibility = View.GONE
-                    noteAdapter = NoteAdapter(notesList!!)
+                    noteAdapter = NoteAdapter(binding.root.context, notesList!!)
                     recyclerView!!.layoutManager =
                         StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
                     recyclerView!!.adapter = noteAdapter
@@ -144,4 +145,5 @@ class NotesFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

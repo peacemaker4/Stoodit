@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -29,6 +30,7 @@ import com.snotshot.myapplication.LoginActivity
 import com.snotshot.myapplication.R
 import com.snotshot.myapplication.adapters.CoursesAdapter
 import com.snotshot.myapplication.databinding.FragmentCoursesBinding
+import com.snotshot.myapplication.extensions.SpacesItemDecoration
 import com.snotshot.myapplication.models.Course
 
 class CoursesFragment : Fragment() {
@@ -79,6 +81,8 @@ class CoursesFragment : Fragment() {
 
         recyclerView = binding.coursesList
         recyclerView!!.setLayoutManager(LinearLayoutManager(binding.root.context))
+        val decoration = SpacesItemDecoration(16)
+        recyclerView!!.addItemDecoration(decoration)
 
         coursesList = ArrayList()
 
@@ -86,13 +90,16 @@ class CoursesFragment : Fragment() {
             @SuppressLint("ResourceType")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 coursesList = ArrayList()
-                for (noteSnapshot in dataSnapshot.children) {
-                    val course = noteSnapshot.getValue<Course>()!!
+                for (courseSnapshot in dataSnapshot.children) {
+                    val course = courseSnapshot.getValue<Course>()!!
+                    course.uid = courseSnapshot.key
                     coursesList!!.add(course)
                 }
                 if(_binding != null) {
                     binding.progressBar.visibility = View.GONE
-                    coursesAdapter = CoursesAdapter(coursesList!!)
+                    coursesAdapter = CoursesAdapter(binding.root.context, coursesList!!)
+                    recyclerView!!.layoutManager =
+                        StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
                     recyclerView!!.adapter = coursesAdapter
                 }
             }

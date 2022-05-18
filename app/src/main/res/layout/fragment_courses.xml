@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:context=".ui.courses.UsersFragment"
-    android:layout_height="match_parent">
+    tools:context=".ui.courses.CoursesFragment"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    >
 
     <TextView
         android:id="@+id/text_courses"
@@ -18,6 +20,7 @@
         android:textColor="@color/white"
         android:background="@color/welcome_page_btn"
         android:textSize="34sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,8 +47,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/coursesList"
-        android:layout_width="409dp"
-        android:layout_height="469dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
