@@ -187,7 +187,7 @@ class ProfileFragment : Fragment() {
                 if(credits!=0) total /= credits
                 else total = 0.0
                 if(_binding != null) {
-                    binding.gpaText.text = "GPA: " + "%.2f".format(total)
+                    binding.gpaText.text = "%.2f".format(total)
                 }
             }
 
