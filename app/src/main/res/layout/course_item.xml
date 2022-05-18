@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="calculus"
+        android:fontFamily="@font/montserrat_bold"
         android:textAlignment="center"
         android:textColor="@color/welcome_page_btn"
         android:textSize="26sp"
@@ -25,20 +26,20 @@
             android:id="@+id/credit_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/montserrat_bold"
             android:text="5"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/montserrat_bold"
             android:text="credits"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:paddingLeft="5dp"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
 
@@ -51,28 +52,28 @@
         android:id="@+id/total_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/montserrat_bold"
         android:text="100"
         android:textColor="@color/welcome_page_btn"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textSize="16sp" />
+        android:textSize="22sp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/montserrat_bold"
             android:text="%"
             android:textColor="@color/welcome_page_btn"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:paddingLeft="0dp"
-            android:textSize="16sp" />
+            android:textSize="22sp" />
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_marginTop="3dp"
-        android:layout_marginBottom="5dp"
-        android:layout_height="0.2dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="1dp"
         android:background="@color/welcome_page_btn"/>
 
 </LinearLayout>

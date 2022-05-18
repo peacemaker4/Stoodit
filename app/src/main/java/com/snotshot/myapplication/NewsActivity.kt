@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import com.snotshot.myapplication.databinding.ActivityNewsBinding
-import android.webkit.WebView
 import com.snotshot.myapplication.adapters.ArticleAdapter
 
 import androidx.recyclerview.widget.RecyclerView
@@ -13,10 +12,11 @@ import android.widget.ProgressBar
 import com.snotshot.myapplication.models.Article
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import android.R
 import android.content.ContentValues.TAG
+import android.os.Build
 import android.util.Log
 import android.view.View
+import androidx.annotation.RequiresApi
 
 import com.jacksonandroidnetworking.JacksonParserFactory
 
@@ -28,15 +28,9 @@ import org.json.JSONException
 
 import org.json.JSONObject
 
-import org.json.JSONArray
-
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-
-
-
-
-
-
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.snotshot.myapplication.extensions.SpacesItemDecoration
 
 
 class NewsActivity : AppCompatActivity() {
@@ -102,20 +96,16 @@ class NewsActivity : AppCompatActivity() {
         // clearing the articles list before adding news ones
         mArticleList!!.clear()
 
-        // Making a GET Request using Fast
-        // Android Networking Library
-        // the request returns a JSONObject containing
-        // news articles from the news api
-        // or it will return an error
         AndroidNetworking.get("https://newsapi.org/v2/top-headlines")
             .addQueryParameter("language", "en")
-            .addQueryParameter("category", "science")
+            .addQueryParameter("category", "technology")
             .addQueryParameter("apiKey", API_KEY)
             .addHeaders("token", "1234")
             .setTag("test")
             .setPriority(Priority.LOW)
             .build()
             .getAsJSONObject(object : JSONObjectRequestListener {
+                @RequiresApi(Build.VERSION_CODES.O)
                 override fun onResponse(response: JSONObject) {
                     // disabling the progress bar
                     mProgressBar!!.visibility = View.GONE
@@ -159,7 +149,11 @@ class NewsActivity : AppCompatActivity() {
                         }
 
                         // setting the adapter
+                        mRecyclerView!!.layoutManager =
+                            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
                         mArticleAdapter = ArticleAdapter(applicationContext, mArticleList!!)
+                        val decoration = SpacesItemDecoration(16)
+                        mRecyclerView!!.addItemDecoration(decoration)
                         mRecyclerView!!.adapter = mArticleAdapter
                     } catch (e: JSONException) {
                         e.printStackTrace()

@@ -65,8 +65,7 @@ class NoteFormActivity: AppCompatActivity() {
         subject = binding.subjectInput.text.toString().trim()
         note = binding.noteInput.text.toString().trim()
 
-        if(TextUtils.isEmpty(subject)){
-            binding.subjectInput.error = "Enter subject"
+        if(TextUtils.isEmpty(note)){
         }
         else{
             addNote()
@@ -79,7 +78,7 @@ class NoteFormActivity: AppCompatActivity() {
         val note = Note(subject, note)
 
         database.child(path).child(firebaseUser!!.uid).push().setValue(note).addOnSuccessListener { e->
-            Toast.makeText(this, "Note been added", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Note been added", Toast.LENGTH_SHORT).show()
             onBackPressed()
         }.addOnFailureListener{ e->
             Toast.makeText(this, "Error while adding the note: $e", Toast.LENGTH_SHORT).show()

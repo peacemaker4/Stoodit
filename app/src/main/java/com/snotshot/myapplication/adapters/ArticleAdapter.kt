@@ -7,11 +7,20 @@ import android.view.ViewGroup
 import android.view.LayoutInflater
 import com.snotshot.myapplication.R
 import android.content.Intent
+import android.os.Build
 import android.view.View
 import com.snotshot.myapplication.WebActivity
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import com.androidnetworking.widget.ANImageView
-import java.util.ArrayList
+import java.time.*
+import java.time.Duration.between
+import java.time.Period.between
+import java.time.chrono.ChronoPeriod.between
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
+import java.time.temporal.ChronoUnit
+import java.util.*
 
 class ArticleAdapter     // initializing the constructor
     (private val mContext: Context, private val mArrayList: ArrayList<Article>) :
@@ -22,6 +31,7 @@ class ArticleAdapter     // initializing the constructor
         return ViewHolder(view)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // the parameter position is the index of the current article
         // getting the current article from the ArrayList using the position
@@ -31,9 +41,36 @@ class ArticleAdapter     // initializing the constructor
         holder.title.text = currentArticle.title
         holder.description.text = currentArticle.description
 
-        // subString(0,10) trims the date to make it short
-        holder.contributordate.text = currentArticle.author +
-                " | " + currentArticle.publishedAt!!.substring(0, 10)
+        val instant = Instant.parse(currentArticle.publishedAt) ;
+
+
+        val z: ZoneId = ZoneId.of("Asia/Almaty")
+        val zdt: ZonedDateTime = instant.atZone(z)
+        val zdtNow: ZonedDateTime = ZonedDateTime.now(z)
+//        val diff = ChronoUnit.between(zdt, zdtNow)
+//        val locale: Locale = Locale.ENGLISH
+//        val f = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withLocale(locale)
+//        val output = zdt.format(f)
+        val duration = Duration.between(zdt, zdtNow)
+        var output = ""
+        if(duration.toDays() >= 1){
+            output = duration.toDays().toString() + " d"
+        }
+        if(duration.toHours() >= 1){
+            output = duration.toHours().toString() + " h"
+        }
+        else if(duration.toMinutes() > 1){
+            output = duration.toMinutes().toString() + " m"
+        }
+        else{
+            output = duration.toSeconds().toString() + " s"
+        }
+
+        if(currentArticle.author != "null" && !currentArticle.author!!.isEmpty()){
+            holder.contributordate.text = currentArticle.author + " • "
+        }
+        holder.publishtime.text = output
+
 
         // Loading image from network into
         // Fast Android Networking View ANImageView
@@ -64,6 +101,7 @@ class ArticleAdapter     // initializing the constructor
         val title: TextView
         val description: TextView
         val contributordate: TextView
+        val publishtime: TextView
         val image: ANImageView
 
         init {
@@ -72,6 +110,7 @@ class ArticleAdapter     // initializing the constructor
             description = itemView.findViewById(R.id.description_id)
             image = itemView.findViewById(R.id.image_id)
             contributordate = itemView.findViewById(R.id.contributordate_id)
+            publishtime = itemView.findViewById(R.id.publish_time)
         }
     }
 

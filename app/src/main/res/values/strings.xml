@@ -20,4 +20,5 @@
     <string name="notes_profile">Notes</string>
     <string name="courses">Courses</string>
     <string name="fragment_courses">Courses</string>
+    <string name="users">Users</string>
 </resources>

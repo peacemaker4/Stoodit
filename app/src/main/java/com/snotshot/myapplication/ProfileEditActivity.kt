@@ -13,6 +13,7 @@ import android.R
 import android.app.ProgressDialog
 import android.content.ContentValues
 import android.graphics.Color
+import android.net.Uri
 import android.opengl.Visibility
 import android.text.TextUtils
 import android.util.Log
@@ -28,12 +29,28 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.snotshot.myapplication.adapters.CustomSpinnerAdapter
 import com.snotshot.myapplication.databinding.ActivityProfileEditBinding
 import com.snotshot.myapplication.models.Note
 import com.snotshot.myapplication.models.University
 import com.snotshot.myapplication.models.User
 import com.snotshot.myapplication.ui.notes.NotesFragment
+import android.webkit.MimeTypeMap
+
+import android.content.ContentResolver
+import com.google.firebase.storage.UploadTask
+
+import androidx.annotation.NonNull
+
+import com.google.android.gms.tasks.OnCompleteListener
+
+
+
+
+
+
 
 
 class ProfileEditActivity: AppCompatActivity() {
@@ -57,6 +74,9 @@ class ProfileEditActivity: AppCompatActivity() {
     private var group = ""
     private var description = ""
     private var user = User()
+
+    private lateinit var imageUri: Uri
+    private val IMAGE_REQUEST = 2
 
     private lateinit var spinnerAdapter: CustomSpinnerAdapter
 
@@ -110,18 +130,34 @@ class ProfileEditActivity: AppCompatActivity() {
                     id++
                 }
                 binding.spinner.setSelection(id)
+                if(!user.picture.isNullOrBlank()){
+                    binding.deleteBtn.visibility = View.VISIBLE
+                }
+                else{
+                    binding.deleteBtn.visibility = View.GONE
+                }
             }
             override fun onCancelled(databaseError: DatabaseError) {
                 Log.w(ContentValues.TAG, "loadPost:onCancelled", databaseError.toException())
             }
         }
 
-
-
         database.addValueEventListener(userListener)
 
         binding.saveBtn.setOnClickListener{
             validateData()
+        }
+
+        binding.profileImage.setOnClickListener{
+            openImage()
+        }
+        binding.deleteBtn.setOnClickListener{
+            var fileRef: StorageReference = FirebaseStorage.getInstance().getReference().child("users").child(user.picture.toString())
+            fileRef.delete().addOnCompleteListener{
+                database.child("picture").setValue(null).addOnSuccessListener {
+                    Toast.makeText(this, "Profile picture removed", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
@@ -140,11 +176,12 @@ class ProfileEditActivity: AppCompatActivity() {
         else{
             saveChanges()
         }
+
     }
 
     private fun saveChanges(){
 
-        val updated_user = User(firebaseUser.uid, username, firebaseUser.email, university, year, group, description)
+        val updated_user = User(firebaseUser.uid, username, firebaseUser.email, university, year, group, description, user.picture)
 
         database.setValue(updated_user).addOnSuccessListener { e->
             var toast = Toast.makeText(this, "User info updated!", Toast.LENGTH_SHORT)
@@ -156,6 +193,62 @@ class ProfileEditActivity: AppCompatActivity() {
         }
     }
 
+    private fun openImage() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(intent, IMAGE_REQUEST)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode.equals(IMAGE_REQUEST) && resultCode.equals(RESULT_OK)){
+            imageUri = data?.data!!
+
+            uploadImage()
+        }
+    }
+
+    private fun uploadImage() {
+        val pd = ProgressDialog(this)
+        pd.setMessage("Uploading")
+        pd.show()
+
+        if (imageUri != null) {
+
+            val path = firebaseUser.uid + "." + getFileExtension(imageUri)
+
+            var fileRef: StorageReference
+            if(!user.picture.isNullOrBlank()){
+                fileRef = FirebaseStorage.getInstance().getReference().child("users").child(user.picture.toString())
+                fileRef.delete()
+            }
+
+            fileRef = FirebaseStorage.getInstance().getReference().child("users").child(path)
+            fileRef.putFile(imageUri).addOnProgressListener { p ->
+                val progress = (100 * p.bytesTransferred)/p.totalByteCount
+                pd.setMessage("Uploading: " + progress + "%")
+            }.addOnCompleteListener {
+                fileRef.downloadUrl.addOnSuccessListener { uri ->
+                    var url = uri.toString()
+
+                    pd.dismiss()
+
+                    database.child("picture").setValue("")
+                    database.child("picture").setValue(path).addOnSuccessListener {
+                        Toast.makeText(this, "Profile Image Uploaded", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getFileExtension(imageUri: Uri): Any? {
+        val contentResolver = contentResolver
+        val mimeTypeMap = MimeTypeMap.getSingleton()
+        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(imageUri))
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

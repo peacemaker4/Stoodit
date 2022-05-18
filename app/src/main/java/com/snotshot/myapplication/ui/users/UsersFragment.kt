@@ -1,8 +1,9 @@
-package com.snotshot.myapplication.ui.courses
+package com.snotshot.myapplication.ui.users
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -24,17 +25,24 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import com.snotshot.myapplication.CourseFormActivity
 import com.snotshot.myapplication.LoginActivity
 import com.snotshot.myapplication.R
-import com.snotshot.myapplication.adapters.CoursesAdapter
-import com.snotshot.myapplication.databinding.FragmentCoursesBinding
-import com.snotshot.myapplication.models.Course
+import com.snotshot.myapplication.adapters.UsersAdapter
+import com.snotshot.myapplication.databinding.FragmentUsersBinding
+import com.snotshot.myapplication.models.User
 
-class CoursesFragment : Fragment() {
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.Toast
 
-    private lateinit var coursesFragmentModel: CoursesFragmentModel
-    private var _binding: FragmentCoursesBinding? = null
+
+
+
+
+class UsersFragment : Fragment() {
+
+    private lateinit var usersFragmentModel: UsersFragmentModel
+    private var _binding: FragmentUsersBinding? = null
 
     private val binding get() = _binding!!
 
@@ -44,56 +52,57 @@ class CoursesFragment : Fragment() {
     //Firebase db
     lateinit var database: DatabaseReference
     private val url = "https://studit-b2d9b-default-rtdb.asia-southeast1.firebasedatabase.app"
-    private val path = "courses"
+    private val path = "users"
 
     private var email = ""
 
-    private var coursesAdapter: CoursesAdapter? = null
+    private var usersAdapter: UsersAdapter? = null
     private var recyclerView: RecyclerView? = null
 
-    private var coursesList: ArrayList<Course>? = null
+    private var usersList: ArrayList<User>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        coursesFragmentModel =
-            ViewModelProvider(this).get(CoursesFragmentModel::class.java)
+        usersFragmentModel =
+            ViewModelProvider(this).get(UsersFragmentModel::class.java)
 
-        _binding = FragmentCoursesBinding.inflate(inflater, container, false)
+        _binding = FragmentUsersBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
-        val textView: TextView = binding.textCourses
-        coursesFragmentModel.text.observe(viewLifecycleOwner, Observer {
+        val textView: TextView = binding.textUsers
+        usersFragmentModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
 
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser != null) {
-            database = Firebase.database(url).reference.child(path).child(firebaseUser.uid)
+            database = Firebase.database(url).reference.child(path)
         }
 
-        recyclerView = binding.coursesList
+        recyclerView = binding.usersList
         recyclerView!!.setLayoutManager(LinearLayoutManager(binding.root.context))
 
-        coursesList = ArrayList()
+        usersList = ArrayList()
 
-        val notesListener = object : ValueEventListener {
+        val usersListener = object : ValueEventListener {
             @SuppressLint("ResourceType")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                coursesList = ArrayList()
+                usersList = ArrayList()
                 for (noteSnapshot in dataSnapshot.children) {
-                    val course = noteSnapshot.getValue<Course>()!!
-                    coursesList!!.add(course)
+                    val user = noteSnapshot.getValue<User>()!!
+                    usersList!!.add(user)
                 }
                 if(_binding != null) {
                     binding.progressBar.visibility = View.GONE
-                    coursesAdapter = CoursesAdapter(coursesList!!)
-                    recyclerView!!.adapter = coursesAdapter
+                    usersAdapter = UsersAdapter(usersList!!)
+                    recyclerView!!.adapter = usersAdapter
+
                 }
             }
 
@@ -101,15 +110,9 @@ class CoursesFragment : Fragment() {
                 Log.w(ContentValues.TAG, "Read failed", databaseError.toException())
             }
         }
-        database.addValueEventListener(notesListener)
+        database.addValueEventListener(usersListener)
 
-        val addBtn = root.findViewById(R.id.addCourseBtn) as FloatingActionButton?
-        if (addBtn != null) {
-            addBtn.setOnClickListener(View.OnClickListener {
-                binding.root.context.startActivity(Intent(binding.root.context, CourseFormActivity::class.java))
-            })
 
-        }
 
         return root
     }

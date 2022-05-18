@@ -26,9 +26,14 @@
         android:name="com.snotshot.myapplication.ui.courses.CoursesFragment"
         android:label="@string/fragment_courses"
         tools:layout="@layout/fragment_courses" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_learn"-->
+<!--        android:name="com.snotshot.myapplication.ui.learn.LearnFragment"-->
+<!--        android:label="Learn"-->
+<!--        tools:layout="@layout/fragment_learn" />-->
     <fragment
-        android:id="@+id/nav_learn"
-        android:name="com.snotshot.myapplication.ui.learn.LearnFragment"
-        android:label="Learn"
-        tools:layout="@layout/fragment_learn" />
+        android:id="@+id/nav_users"
+        android:name="com.snotshot.myapplication.ui.users.UsersFragment"
+        android:label="Users"
+        tools:layout="@layout/fragment_users" />
 </navigation>

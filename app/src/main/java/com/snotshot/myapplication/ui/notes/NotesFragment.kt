@@ -14,9 +14,7 @@ import com.snotshot.myapplication.LoginActivity
 import com.snotshot.myapplication.R
 import android.app.Activity
 import android.content.ContentValues
-import android.graphics.Color
 import android.util.Log
-import android.widget.Button
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -28,19 +26,13 @@ import com.google.firebase.ktx.Firebase
 import com.snotshot.myapplication.NoteFormActivity
 import com.snotshot.myapplication.databinding.FragmentNotesBinding
 import com.snotshot.myapplication.models.Note
-import com.snotshot.myapplication.models.User
 import com.snotshot.myapplication.ui.profile.NotesFragmentModel
-import android.R.string.no
 import android.annotation.SuppressLint
-import android.widget.ArrayAdapter
-import android.widget.Toast
-import android.R.string.no
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.androidnetworking.AndroidNetworking
-import com.snotshot.myapplication.adapters.ArticleAdapter
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.snotshot.myapplication.adapters.NoteAdapter
-import com.snotshot.myapplication.models.Article
+import com.snotshot.myapplication.extensions.SpacesItemDecoration
 
 
 class NotesFragment : Fragment() {
@@ -96,6 +88,9 @@ class NotesFragment : Fragment() {
 
         notesList = ArrayList()
 
+        val decoration = SpacesItemDecoration(16)
+        recyclerView!!.addItemDecoration(decoration)
+
         val notesListener = object : ValueEventListener {
             @SuppressLint("ResourceType")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -104,9 +99,12 @@ class NotesFragment : Fragment() {
                     var note = noteSnapshot.getValue<Note>()!!
                     notesList!!.add(note)
                 }
+                notesList!!.reverse()
                 if(_binding != null) {
                     binding.progressBar.visibility = View.GONE
                     noteAdapter = NoteAdapter(notesList!!)
+                    recyclerView!!.layoutManager =
+                        StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
                     recyclerView!!.adapter = noteAdapter
                 }
             }

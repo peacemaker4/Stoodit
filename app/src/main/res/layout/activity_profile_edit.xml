@@ -16,6 +16,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/profile_image"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_icon_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        android:background="@color/welcome_page_btn"
+        ></com.google.android.material.imageview.ShapeableImageView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/delete_btn"
+        android:layout_width="35dp"
+        android:layout_height="45dp"
+        android:backgroundTint="#E91E63"
+        android:minWidth="0dp"
+        app:icon="@drawable/ic_icon_delete"
+        app:iconGravity="textTop"
+        app:iconPadding="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@+id/profile_image"
+        app:layout_constraintTop_toTopOf="@+id/profile_image" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -134,11 +164,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="116dp"
-        android:backgroundTint="@color/welcome_page_btn"
+        android:background="@drawable/edit_text_border_white"
         android:enabled="false"
         android:fontFamily="@font/montserrat_semibold"
         android:hint="Description"
         android:inputType="text"
+        android:padding="10dp"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"

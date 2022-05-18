@@ -27,8 +27,8 @@ class CoursesAdapter
         val currentCourse = mArrayList[position]
 
         holder.subject.text = currentCourse.subject
-        holder.credit.text = currentCourse.credit
-        holder.total.text = currentCourse.total
+        holder.credit.text = currentCourse.credit.toString()
+        holder.total.text = currentCourse.total.toString()
 
     }
 

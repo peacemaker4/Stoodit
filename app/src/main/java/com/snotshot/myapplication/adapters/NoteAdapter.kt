@@ -26,7 +26,6 @@ class NoteAdapter
 
         holder.subject.text = currentNote.subject
         holder.note.text = currentNote.note
-
     }
 
     override fun getItemCount(): Int {

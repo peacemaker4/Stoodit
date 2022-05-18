@@ -2,33 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="wrap_content">
-
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_border_gray"
+    android:padding="10dp"
+    >
     <TextView
         android:id="@+id/subject_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="calculus"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
         android:textAlignment="textStart"
-        android:textColor="@color/welcome_page_btn"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:paddingBottom="5dp"
+        />
 
     <TextView
         android:id="@+id/note_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/montserrat"
         android:text="Yeah i learned that and that"
         android:textAlignment="textStart"
+        android:textStyle="bold"
+        android:textColor="@color/gray"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
         android:textAllCaps="false"
-        android:textSize="16sp" />
+        android:textSize="15sp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="5dp"
-        android:layout_height="0.2dp"
-        android:background="@color/welcome_page_btn"/>
+
 
 </LinearLayout>

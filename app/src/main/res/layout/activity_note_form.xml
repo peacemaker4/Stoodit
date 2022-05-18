@@ -5,38 +5,45 @@
     android:id="@+id/container"
     android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    >
 
     <EditText
         android:id="@+id/subject_input"
-        android:layout_width="350dp"
-        android:layout_height="48dp"
-        android:background="@drawable/edit_text_border_white"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/transparent"
         android:ems="10"
         android:hint="Subject"
         android:inputType="text"
         android:textAlignment="viewStart"
         android:textColor="#000000"
-        android:textColorHint="#555555"
+        android:textColorHint="@color/gray"
+        android:textSize="20dp"
+        android:fontFamily="@font/montserrat"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.060000002" />
-
-    <EditText
+        app:layout_constraintVertical_bias="0.01999998" />
+    <com.snotshot.myapplication.extensions.LinedEditText
         android:id="@+id/note_input"
-        android:layout_width="350dp"
-        android:layout_height="300dp"
-        android:background="@drawable/edit_text_border_white"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Note"
+        android:singleLine="false"
+        android:background="@drawable/transparent"
         android:inputType="textMultiLine"
-        android:paddingTop="15dp"
+        android:paddingTop="20dp"
         android:textAlignment="viewStart"
         android:textColor="#000000"
-        android:textColorHint="#555555"
+        android:textColorHint="@color/gray"
+        android:fontFamily="@font/montserrat"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
@@ -45,18 +52,23 @@
         app:layout_constraintVertical_bias="0.050000012" />
 
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNotesBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
         android:backgroundTint="@color/welcome_page_btn"
-        android:drawableRight="@drawable/ic_icon_add"
-        android:text="Add"
+        app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/note_input"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.98"
+        app:srcCompat="@drawable/ic_icon_done"
+        app:tint="@color/white"
+
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:context=".ui.courses.CoursesFragment"
+    tools:context=".ui.courses.UsersFragment"
     android:layout_height="match_parent">
 
     <TextView
@@ -14,7 +14,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
-        android:textColor="@color/welcome_page_btn"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/white"
+        android:background="@color/welcome_page_btn"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,12 +46,13 @@
         android:id="@+id/coursesList"
         android:layout_width="409dp"
         android:layout_height="469dp"
-        android:paddingRight="10dp"
         android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_courses" />
+        app:layout_constraintTop_toBottomOf="@+id/text_courses"
+        app:layout_constraintVertical_bias="0.25" />
 
     <ProgressBar
         android:id="@+id/progressBar"

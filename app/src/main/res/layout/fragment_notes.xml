@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.notes.NotesFragment"
     android:background="@color/white"
+    android:paddingTop="10dp"
     >
 
     <TextView
@@ -17,8 +18,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
-        android:textColor="@color/welcome_page_btn"
+        android:visibility="gone"
+        android:textColor="@color/white"
+        android:fontFamily="@font/montserrat_bold"
         android:textSize="34sp"
+        android:background="@color/welcome_page_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,15 +59,15 @@
         app:layout_constraintTop_toBottomOf="@+id/text_profile" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:id="@+id/notesList"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_profile" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -87,7 +87,7 @@ class CourseFormActivity: AppCompatActivity() {
     private fun addCourse(){
         val firebaseUser = firebaseAuth.currentUser
 
-        val course = Course(subject, credit, total)
+        val course = Course(subject, credit.toInt(), total.toInt())
 
         database.child(path).child(firebaseUser!!.uid).push().setValue(course).addOnSuccessListener { e->
             Toast.makeText(this, "Course been added", Toast.LENGTH_SHORT).show()

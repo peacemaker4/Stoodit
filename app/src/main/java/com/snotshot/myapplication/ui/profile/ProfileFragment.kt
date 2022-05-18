@@ -17,6 +17,8 @@ import com.snotshot.myapplication.databinding.FragmentProfileBinding
 import android.app.Activity
 import android.content.ContentValues
 import android.content.ContentValues.TAG
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.util.Log
 import android.widget.Button
@@ -30,11 +32,14 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.snotshot.myapplication.MainActivity
 import com.snotshot.myapplication.ProfileEditActivity
 import com.snotshot.myapplication.adapters.CoursesAdapter
 import com.snotshot.myapplication.models.Course
 import com.snotshot.myapplication.models.User
+import java.io.File
 
 
 class ProfileFragment : Fragment() {
@@ -59,6 +64,8 @@ class ProfileFragment : Fragment() {
     lateinit var coursesDatabase: DatabaseReference
 
     private var email = ""
+
+    lateinit var storageRef: StorageReference
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -123,6 +130,28 @@ class ProfileFragment : Fragment() {
                         binding.descriptionText.text = ""
                     }
                     binding.editBtn.isEnabled = true
+
+
+                    if(!user.picture.isNullOrBlank()){
+                        binding.pictureProgress.visibility = View.VISIBLE
+                        binding.pictureProgressHorizontal.visibility = View.VISIBLE
+                        storageRef = FirebaseStorage.getInstance().getReference().child(path).child(user.picture.toString())
+                        var localFile: File = File.createTempFile(firebaseUser!!.uid, user.picture!!.replace(firebaseUser!!.uid + ".", ""))
+                        storageRef.getFile(localFile).addOnProgressListener { p ->
+                            val progress = (100 * p.bytesTransferred)/p.totalByteCount
+                            binding.pictureProgressHorizontal.progress = progress.toInt()
+                        }.addOnSuccessListener {
+                            val bitmap : Bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                            binding.profileImage.setImageBitmap(bitmap)
+                            binding.pictureProgress.visibility = View.GONE
+                            binding.pictureProgressHorizontal.visibility = View.GONE
+                        }.addOnFailureListener{
+                            Toast.makeText(binding.root.context, "Error retrieving image", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    else{
+                        binding.profileImage.setImageDrawable(resources.getDrawable(R.drawable.profile))
+                    }
                 }
             }
 
@@ -139,25 +168,25 @@ class ProfileFragment : Fragment() {
                 var credits: Int = 0
                 for (noteSnapshot in dataSnapshot.children) {
                     val course = noteSnapshot.getValue<Course>()!!
-                    val score =  course.total?.toDouble()!!
+                    val score = course.total!!
+
                     credits += course.credit?.toInt()!!
                     when {
-                        score>=95 -> total += 4 * course.credit.toInt()
-                        score>=90 -> total += 3.67 * course.credit.toInt()
-                        score>=85 -> total += 3.33 * course.credit.toInt()
-                        score>=80 -> total += 3 * course.credit.toInt()
-                        score>=75 -> total += 2.67 * course.credit.toInt()
-                        score>=70 -> total += 2.33 * course.credit.toInt()
-                        score>=65 -> total += 2 * course.credit.toInt()
-                        score>=60 -> total += 1.67 * course.credit.toInt()
-                        score>=55 -> total += 1.33 * course.credit.toInt()
-                        score>=50 -> total += 1 * course.credit.toInt()
+                        score>=95 -> total += 4 * course.credit
+                        score>=90 -> total += 3.67 * course.credit
+                        score>=85 -> total += 3.33 * course.credit
+                        score>=80 -> total += 3 * course.credit
+                        score>=75 -> total += 2.67 * course.credit
+                        score>=70 -> total += 2.33 * course.credit
+                        score>=65 -> total += 2 * course.credit
+                        score>=60 -> total += 1.67 * course.credit
+                        score>=55 -> total += 1.33 * course.credit
+                        score>=50 -> total += 1 * course.credit
                     }
                 }
+                if(credits!=0) total /= credits
+                else total = 0.0
                 if(_binding != null) {
-                    if(credits!=0) total /= credits
-                    else total = 0.0
-
                     binding.gpaText.text = "GPA: " + "%.2f".format(total)
                 }
             }
