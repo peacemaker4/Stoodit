@@ -100,7 +100,7 @@ class UsersFragment : Fragment() {
                 }
                 if(_binding != null) {
                     binding.progressBar.visibility = View.GONE
-                    usersAdapter = UsersAdapter(usersList!!)
+                    usersAdapter = UsersAdapter(binding.root.context, usersList!!)
                     recyclerView!!.adapter = usersAdapter
 
                 }

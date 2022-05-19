@@ -11,11 +11,13 @@ import android.view.View
 import com.snotshot.myapplication.WebActivity
 import android.widget.TextView
 import android.widget.Toast
+import com.snotshot.myapplication.CourseEditActivity
+import com.snotshot.myapplication.ProfilePageActivity
 import com.snotshot.myapplication.models.User
 import java.util.ArrayList
 
 class UsersAdapter
-    (private val mArrayList: ArrayList<User>) :
+    (private val mContext: Context, private val mArrayList: ArrayList<User>) :
     RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.user_item, parent, false)
@@ -29,6 +31,11 @@ class UsersAdapter
         holder.username.text = currentUser.username
         holder.university.text = currentUser.university
 
+        holder.itemView.setOnClickListener{val intent = Intent(mContext, ProfilePageActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            intent.putExtra("uid", currentUser.uid)
+            mContext.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

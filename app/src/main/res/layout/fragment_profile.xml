@@ -143,7 +143,7 @@
         android:layout_width="150dp"
         android:layout_height="38dp"
         android:layout_marginBottom="149dp"
-        android:fontFamily="@font/montserrat_bold"
+        android:fontFamily="@font/montserrat_semibold"
         android:text=""
         android:textAlignment="center"
         android:textColor="@color/welcome_page_btn"
@@ -157,7 +157,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:background="@drawable/descrip"
+        android:background="@drawable/rounded_border_gray"
         android:fontFamily="@font/montserrat_semibold"
         android:padding="10dp"
         android:textAlignment="center"
@@ -229,7 +229,6 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView8"
-        app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="@+id/imageView8" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -241,10 +240,10 @@
 
     <ImageView
         android:id="@+id/imageView18"
-        android:layout_width="6dp"
+        android:layout_width="1dp"
         android:layout_height="36dp"
         android:layout_marginBottom="244dp"
-        android:src="@drawable/palka"
+        android:background="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/universityText"
         app:layout_constraintHorizontal_bias="0.5"
@@ -252,10 +251,10 @@
 
     <ImageView
         android:id="@+id/imageView19"
-        android:layout_width="6dp"
+        android:layout_width="1dp"
         android:layout_height="36dp"
         android:layout_marginBottom="244dp"
-        android:src="@drawable/palka"
+        android:background="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/groupText"
         app:layout_constraintHorizontal_bias="0.5"
