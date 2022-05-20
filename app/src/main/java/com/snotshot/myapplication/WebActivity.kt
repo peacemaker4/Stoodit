@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.webkit.WebView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.snotshot.myapplication.databinding.ActivityWebBinding
 
 
@@ -33,6 +35,7 @@ class WebActivity : AppCompatActivity() {
         myWebView = binding.webView
 
         val intent = intent
+
 
         // checking if there is an intent
         if (intent != null) {

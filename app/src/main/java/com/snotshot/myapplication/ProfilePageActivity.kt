@@ -69,11 +69,6 @@ class ProfilePageActivity: AppCompatActivity() {
     private val url = "https://studit-b2d9b-default-rtdb.asia-southeast1.firebasedatabase.app"
     private val path = "users"
 
-    private var username = ""
-    private var university = ""
-    private var year = ""
-    private var group = ""
-    private var description = ""
     private var uid = ""
     private var user = User()
 
@@ -91,10 +86,9 @@ class ProfilePageActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         actionBar = supportActionBar!!
-        actionBar.title = "Profile"
+        actionBar.title = "User"
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.setDisplayShowHomeEnabled(true)
-
 
         firebaseAuth = FirebaseAuth.getInstance()
 
@@ -108,7 +102,6 @@ class ProfilePageActivity: AppCompatActivity() {
             database = Firebase.database(url).reference.child(path).child(uid)
             coursesDatabase = Firebase.database(url).reference.child(gpaPath).child(uid)
         }
-        var user = User()
 
         val userListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -118,6 +111,9 @@ class ProfilePageActivity: AppCompatActivity() {
                     binding.loadingBar.visibility = View.GONE
 
                     binding.textProfile.text = user.username
+//                    binding.textEmail.text = user.email
+
+                    actionBar.title = user.username
 
                     if(user.university!!.length > 0) {
                         binding.universityText.visibility = View.VISIBLE

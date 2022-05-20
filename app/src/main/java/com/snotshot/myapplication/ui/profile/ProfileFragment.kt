@@ -11,8 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.snotshot.myapplication.LoginActivity
-import com.snotshot.myapplication.R
 import com.snotshot.myapplication.databinding.FragmentProfileBinding
 import android.app.Activity
 import android.content.ContentValues
@@ -34,8 +32,7 @@ import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.snotshot.myapplication.MainActivity
-import com.snotshot.myapplication.ProfileEditActivity
+import com.snotshot.myapplication.*
 import com.snotshot.myapplication.adapters.CoursesAdapter
 import com.snotshot.myapplication.models.Course
 import com.snotshot.myapplication.models.User
@@ -100,6 +97,8 @@ class ProfileFragment : Fragment() {
                     profileViewModel.text.observe(viewLifecycleOwner, Observer {
                         textView.text = user.username
                     })
+                    binding.textEmail.text = user.email
+
                     if(user.university!!.length > 0) {
                         binding.universityText.visibility = View.VISIBLE
                         binding.universityText.text = user.university
@@ -224,7 +223,7 @@ class ProfileFragment : Fragment() {
 
         }
         else{
-            binding.root.context.startActivity(Intent(binding.root.context, LoginActivity::class.java))
+            binding.root.context.startActivity(Intent(binding.root.context, WelcomeActivity::class.java))
             val activity = context as Activity?
             activity!!.finish()
         }

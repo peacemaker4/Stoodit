@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "784694790345",
+    "firebase_url": "https://studit-b2d9b-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "studit-b2d9b",
     "storage_bucket": "studit-b2d9b.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "784694790345-a3c5fltsghct7hvf0es4h3q9vh5bvgvq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.snotshot.myapplication",
+            "certificate_hash": "34a7e44933e22d04426ccce4931b492cc8ba96b5"
+          }
+        },
         {
           "client_id": "784694790345-ai5vaq01nnur87889h4q5duasnric75l.apps.googleusercontent.com",
           "client_type": 3

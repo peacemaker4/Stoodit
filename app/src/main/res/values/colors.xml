@@ -9,7 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="welcome_page_back">#2f2f2f</color>
     <color name="welcome_page_btn">#009afe</color>
+    <color name="welcome_page_btn_50">#40009AFE</color>
     <color name="gray">#8D8D8D</color>
     <color name="light_gray">#EFEFEF</color>
     <color name="lighter_gray">#DDDDDD</color>
+    <color name="dark_back">#2C2C2C</color>
 </resources>

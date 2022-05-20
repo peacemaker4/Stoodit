@@ -4,41 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/welcome_page_back"
+    android:background="@drawable/lp_bg"
     tools:context=".WelcomeActivity">
 
     <Button
-        android:id="@+id/signUpBtn"
-        android:layout_width="150dp"
+        android:id="@+id/signInGoogle"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="108dp"
-        android:backgroundTint="@color/welcome_page_btn"
-        android:fontFamily="@font/montserrat_bold"
+        android:gravity="start"
+        android:background="@drawable/rounded_pill_secondary"
+        android:drawableLeft="@drawable/ic_icon_google"
+        android:fontFamily="@font/montserrat"
+        android:text="Google"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.708" />
+
+    <Button
+        android:id="@+id/signUpBtn"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_pill_secondary"
+        android:drawableLeft="@drawable/ic_icon_add_user"
+        android:fontFamily="@font/montserrat"
         android:hapticFeedbackEnabled="false"
         android:text="@string/sign_up"
         android:textAllCaps="false"
-        android:textColor="@color/welcome_page_back"
+        android:textColor="@color/white"
         android:textSize="22sp"
         app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInGoogle"
+        app:layout_constraintVertical_bias="0.100000024" />
 
     <Button
         android:id="@+id/signInBtn"
-        android:layout_width="150dp"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="108dp"
-        android:backgroundTint="@color/welcome_page_back"
-        android:fontFamily="@font/montserrat_bold"
+        android:background="@drawable/rounded_pill_secondary"
+        android:fontFamily="@font/montserrat"
         android:text="@string/sign_in"
+        android:drawableLeft="@drawable/ic_icon_login"
         android:textAllCaps="false"
-        android:textColor="@color/welcome_page_btn"
+        android:textColor="@color/white"
         android:textSize="22sp"
         app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5
+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpBtn"
+        app:layout_constraintVertical_bias="0.16000003" />
 
     <ImageView
         android:id="@+id/imageView4"

@@ -75,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun firebaseLogin() {
         progressDialog.show()
+
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 //login success
@@ -84,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
                 val firebaseUser = firebaseAuth.currentUser
                 val email = firebaseUser!!.email
 
-                Toast.makeText(this, "Logged in as ${email} successfully!", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Logged in as ${email} successfully!", Toast.LENGTH_SHORT).show()
                 //open main page
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
@@ -95,6 +96,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Login failed due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

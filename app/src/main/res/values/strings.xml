@@ -12,8 +12,8 @@
     <string name="menu_profile">Profile</string>
 
     <string name="intro">Welcome, stoodent</string>
-    <string name="sign_in">sign in</string>
-    <string name="sign_up">sign up</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
 
     <string name="login">Login</string>
     <string name="notes">Notes</string>
