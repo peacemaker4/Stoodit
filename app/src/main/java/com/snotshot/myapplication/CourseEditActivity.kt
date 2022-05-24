@@ -6,13 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
-import com.google.android.material.navigation.NavigationView
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -20,7 +13,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.snotshot.myapplication.databinding.ActivityCourseFormBinding
-import com.snotshot.myapplication.databinding.ActivityMainBinding
 import com.snotshot.myapplication.models.Course
 
 
@@ -70,7 +62,6 @@ class CourseEditActivity: AppCompatActivity() {
         binding.addCourseBtn.setText("Save")
         binding.addCourseBtn.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_icon_done, 0)
 
-
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseUser = firebaseAuth.currentUser!!
         database = Firebase.database(url).reference
@@ -117,7 +108,7 @@ class CourseEditActivity: AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(com.snotshot.myapplication.R.menu.note, menu)
+        menuInflater.inflate(com.snotshot.myapplication.R.menu.item, menu)
         return true
     }
 

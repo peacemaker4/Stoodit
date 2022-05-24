@@ -7,9 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -33,10 +31,10 @@ import com.snotshot.myapplication.models.User
 
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
+import android.widget.SearchView
 import android.widget.Toast
-
-
-
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class UsersFragment : Fragment() {
@@ -60,6 +58,7 @@ class UsersFragment : Fragment() {
     private var recyclerView: RecyclerView? = null
 
     private var usersList: ArrayList<User>? = null
+    private var searchList: ArrayList<User>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -75,10 +74,7 @@ class UsersFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
-        val textView: TextView = binding.textUsers
-        usersFragmentModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        setHasOptionsMenu(true)
 
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser != null) {
@@ -89,6 +85,7 @@ class UsersFragment : Fragment() {
         recyclerView!!.setLayoutManager(LinearLayoutManager(binding.root.context))
 
         usersList = ArrayList()
+        searchList = ArrayList()
 
         val usersListener = object : ValueEventListener {
             @SuppressLint("ResourceType")
@@ -98,9 +95,10 @@ class UsersFragment : Fragment() {
                     val user = noteSnapshot.getValue<User>()!!
                     usersList!!.add(user)
                 }
+                searchList!!.addAll(usersList!!)
                 if(_binding != null) {
                     binding.progressBar.visibility = View.GONE
-                    usersAdapter = UsersAdapter(binding.root.context, usersList!!)
+                    usersAdapter = UsersAdapter(binding.root.context, searchList!!)
                     recyclerView!!.adapter = usersAdapter
 
                 }
@@ -115,6 +113,42 @@ class UsersFragment : Fragment() {
 
 
         return root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.search, menu)
+        val item = menu?.findItem(R.id.action_search)
+        val searchView = item?.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean{
+                searchList!!.clear()
+                val searchText = newText!!.toLowerCase(Locale.getDefault())
+                if(searchText.isNotEmpty()){
+                    usersList!!.forEach{
+                        if(it.username!!.toLowerCase(Locale.getDefault()).contains(searchText) || it.email!!.toLowerCase(
+                                Locale.getDefault()).contains(searchText)){
+                            searchList!!.add(it)
+                        }
+                    }
+                    recyclerView!!.adapter!!.notifyDataSetChanged()
+                }
+                else{
+                    searchList!!.clear()
+                    searchList!!.addAll(usersList!!)
+                    recyclerView!!.adapter!!.notifyDataSetChanged()
+                }
+
+                return false
+            }
+
+        })
+
+        super.onCreateOptionsMenu(menu, menuInflater)
     }
 
     private fun checkUser() {

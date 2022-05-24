@@ -93,7 +93,7 @@ class NoteEditActivity: AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.note, menu)
+        menuInflater.inflate(R.menu.item, menu)
         return true
     }
 

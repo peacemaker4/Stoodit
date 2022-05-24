@@ -36,4 +36,14 @@
         android:name="com.snotshot.myapplication.ui.users.UsersFragment"
         android:label="Users"
         tools:layout="@layout/fragment_users" />
+    <fragment
+        android:id="@+id/nav_music"
+        android:name="com.snotshot.myapplication.ui.music.MusicFragment"
+        android:label="Music"
+        tools:layout="@layout/fragment_music" />
+    <fragment
+        android:id="@+id/nav_premium"
+        android:name="com.snotshot.myapplication.ui.premium.PremiumFragment"
+        android:label="Premium"
+        tools:layout="@layout/fragment_premium" />
 </navigation>

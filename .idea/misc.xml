@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable-anydpi-v24/ic_icon_login.xml" value="0.165625" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable-anydpi-v24/ic_icon_tmp.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/blue_border_btn.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/button_border.xml" value="0.2755208333333333" />
@@ -15,6 +16,9 @@
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_g.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_login.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_logout.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_music.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_premium.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_search.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_users.xml" value="0.165625" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icons8_google_24.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_launcher_background.xml" value="0.264" />
@@ -45,7 +49,9 @@
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_courses.xml" value="0.24087591240875914" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_gallery.xml" value="0.14895833333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_music.xml" value="0.22327898550724637" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_notes.xml" value="0.2" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_premium.xml" value="0.22327898550724637" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_profile.xml" value="0.4" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_slideshow.xml" value="0.14895833333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_users.xml" value="0.13269927536231885" />
@@ -57,6 +63,7 @@
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/menu/main.xml" value="0.14895833333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/menu/note.xml" value="0.2713541666666667" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/menu/note_menu.xml" value="0.136" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/menu/search.xml" value="0.259375" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/mipmap-anydpi-v26/ic_launcher_stoodit_clip.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2435" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/drawable/ic_launcher_stoodit_clip_foreground.xml" value="0.215" />

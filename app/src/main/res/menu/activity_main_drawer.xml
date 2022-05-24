@@ -24,5 +24,13 @@
             android:id="@+id/nav_users"
             android:icon="@drawable/ic_menu_users"
             android:title="@string/users" />
+        <item
+            android:id="@+id/nav_music"
+            android:icon="@drawable/ic_icon_music"
+            android:title="@string/music" />
+        <item
+            android:id="@+id/nav_premium"
+            android:icon="@drawable/ic_icon_premium"
+            android:title="@string/premium" />
     </group>
 </menu>

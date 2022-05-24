@@ -2,9 +2,6 @@ package com.snotshot.myapplication.ui.notes
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -28,11 +25,15 @@ import com.snotshot.myapplication.databinding.FragmentNotesBinding
 import com.snotshot.myapplication.models.Note
 import com.snotshot.myapplication.ui.profile.NotesFragmentModel
 import android.annotation.SuppressLint
+import android.view.*
+import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.snotshot.myapplication.adapters.NoteAdapter
 import com.snotshot.myapplication.extensions.SpacesItemDecoration
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class NotesFragment : Fragment(){
@@ -58,6 +59,7 @@ class NotesFragment : Fragment(){
     private var recyclerView: RecyclerView? = null
 
     private var notesList: ArrayList<Note>? = null
+    private var searchList: ArrayList<Note>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,6 +71,8 @@ class NotesFragment : Fragment(){
 
         _binding = FragmentNotesBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        setHasOptionsMenu(true)
 
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
@@ -87,6 +91,7 @@ class NotesFragment : Fragment(){
         recyclerView!!.setLayoutManager(LinearLayoutManager(binding.root.context))
 
         notesList = ArrayList()
+        searchList = ArrayList()
 
         val decoration = SpacesItemDecoration(16)
         recyclerView!!.addItemDecoration(decoration)
@@ -101,9 +106,10 @@ class NotesFragment : Fragment(){
                     notesList!!.add(note)
                 }
                 notesList!!.reverse()
+                searchList!!.addAll(notesList!!)
                 if(_binding != null) {
                     binding.progressBar.visibility = View.GONE
-                    noteAdapter = NoteAdapter(binding.root.context, notesList!!)
+                    noteAdapter = NoteAdapter(binding.root.context, searchList!!)
                     recyclerView!!.layoutManager =
                         StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
                     recyclerView!!.adapter = noteAdapter
@@ -139,6 +145,42 @@ class NotesFragment : Fragment(){
             val activity = context as Activity?
             activity!!.finish()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.search, menu)
+        val item = menu?.findItem(R.id.action_search)
+        val searchView = item?.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+
+            override fun onQueryTextChange(newText: String?): Boolean{
+                searchList!!.clear()
+                val searchText = newText!!.toLowerCase(Locale.getDefault())
+                if(searchText.isNotEmpty()){
+                    notesList!!.forEach{
+                        if(it.subject!!.toLowerCase(Locale.getDefault()).contains(searchText) || it.note!!.toLowerCase(Locale.getDefault()).contains(searchText)){
+                            searchList!!.add(it)
+                        }
+                    }
+                    recyclerView!!.adapter!!.notifyDataSetChanged()
+                }
+                else{
+                    searchList!!.clear()
+                    searchList!!.addAll(notesList!!)
+                    recyclerView!!.adapter!!.notifyDataSetChanged()
+                }
+
+                return false
+            }
+
+        })
+
+        super.onCreateOptionsMenu(menu, menuInflater)
     }
 
     override fun onDestroyView() {
