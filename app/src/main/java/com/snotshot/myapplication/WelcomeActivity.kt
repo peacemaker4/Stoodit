@@ -82,9 +82,8 @@ class WelcomeActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        progressDialog.show()
-
         if(requestCode == RC_SIGN_IN){
+
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try{
                 account = task.getResult(ApiException::class.java)!!
@@ -98,6 +97,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun firebaseAuthWithGoogle(idToken: String?) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
+        progressDialog.show()
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task->
                 if(task.isSuccessful){
