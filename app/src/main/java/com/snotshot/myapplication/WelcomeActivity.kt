@@ -23,7 +23,6 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.snotshot.myapplication.databinding.ActivityWelcomeBinding
 import com.snotshot.myapplication.models.User
-import org.jetbrains.anko.startActivityForResult
 
 class WelcomeActivity : AppCompatActivity() {
 

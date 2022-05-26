@@ -84,7 +84,7 @@ class ProfileFragment : Fragment() {
             coursesDatabase = Firebase.database(url).reference.child(gpaPath).child(firebaseUser.uid)
 
         }
-        var user = User()
+        var user: User
 
         val textView: TextView = binding.textProfile
 
@@ -205,7 +205,7 @@ class ProfileFragment : Fragment() {
                 checkUser()
             })
         }
-        val editBtn = root.findViewById(R.id.edit_btn) as MaterialButton?
+        val editBtn = root.findViewById(R.id.edit_btn) as Button?
         if (editBtn != null) {
             editBtn.setOnClickListener(View.OnClickListener {
                 binding.root.context.startActivity(Intent(binding.root.context, ProfileEditActivity::class.java))

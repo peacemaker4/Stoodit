@@ -1,17 +1,13 @@
 package com.snotshot.myapplication.adapters
 
 import android.content.Context
-import com.snotshot.myapplication.models.Article
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import com.snotshot.myapplication.R
 import android.content.Intent
 import android.view.View
-import com.snotshot.myapplication.WebActivity
 import android.widget.TextView
-import android.widget.Toast
-import com.snotshot.myapplication.CourseEditActivity
 import com.snotshot.myapplication.ProfilePageActivity
 import com.snotshot.myapplication.models.User
 import java.util.ArrayList

@@ -92,7 +92,7 @@ class UsersFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 usersList = ArrayList()
                 for (noteSnapshot in dataSnapshot.children) {
-                    val user = noteSnapshot.getValue<User>()!!
+                    val user = noteSnapshot.getValue<User>()!! as User
                     usersList!!.add(user)
                 }
                 searchList!!.addAll(usersList!!)
@@ -152,7 +152,6 @@ class UsersFragment : Fragment() {
     }
 
     private fun checkUser() {
-        //check if user logged in
         val firebaseUser = firebaseAuth.currentUser
         if(firebaseUser != null){
             email = firebaseUser.email.toString();

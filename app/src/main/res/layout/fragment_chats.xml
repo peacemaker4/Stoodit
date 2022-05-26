@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    tools:context=".ui.chats.ChatsFragment"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    >
+
+    <TextView
+        android:id="@+id/text_chats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/white"
+        android:background="@color/welcome_page_btn"
+        android:textSize="34sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01999998" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addChatBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.98"
+        android:backgroundTint="@color/welcome_page_btn"
+        app:borderWidth="0dp"
+        app:srcCompat="@drawable/ic_icon_add"
+        app:tint="@color/white"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatsList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_chats"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:indeterminateTint="@color/welcome_page_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/chatsList"
+        app:layout_constraintStart_toStartOf="@+id/chatsList"
+        app:layout_constraintTop_toBottomOf="@+id/text_chats" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

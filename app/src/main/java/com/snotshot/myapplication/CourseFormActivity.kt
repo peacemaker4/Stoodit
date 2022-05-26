@@ -10,6 +10,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.snotshot.myapplication.databinding.ActivityNoteFormBinding
 import android.R
+import android.app.Activity
 import android.app.ProgressDialog
 import android.opengl.Visibility
 import android.text.TextUtils

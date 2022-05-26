@@ -78,10 +78,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // retrofit, gson
-    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
 
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
 }

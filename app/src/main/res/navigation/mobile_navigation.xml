@@ -37,6 +37,11 @@
         android:label="Users"
         tools:layout="@layout/fragment_users" />
     <fragment
+        android:id="@+id/nav_chats"
+        android:name="com.snotshot.myapplication.ui.chats.ChatsFragment"
+        android:label="Chats"
+        tools:layout="@layout/fragment_chats" />
+    <fragment
         android:id="@+id/nav_music"
         android:name="com.snotshot.myapplication.ui.music.MusicFragment"
         android:label="Music"
