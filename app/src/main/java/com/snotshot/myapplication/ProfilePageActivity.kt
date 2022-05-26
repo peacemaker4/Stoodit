@@ -8,23 +8,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.snotshot.myapplication.databinding.ActivityNoteFormBinding
-import android.R
 import android.annotation.SuppressLint
-import android.app.ProgressDialog
 import android.content.ContentValues
 import android.graphics.Color
-import android.net.Uri
-import android.opengl.Visibility
-import android.text.TextUtils
 import android.util.Log
-import android.util.Patterns
 import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.ActionBar
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -33,24 +22,12 @@ import com.google.firebase.database.ktx.getValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.snotshot.myapplication.adapters.CustomSpinnerAdapter
-import com.snotshot.myapplication.databinding.ActivityProfileEditBinding
-import com.snotshot.myapplication.models.Note
-import com.snotshot.myapplication.models.University
-import com.snotshot.myapplication.models.User
-import com.snotshot.myapplication.ui.notes.NotesFragment
-import android.webkit.MimeTypeMap
 
-import android.content.ContentResolver
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import com.google.firebase.storage.UploadTask
 
-import androidx.annotation.NonNull
-
-import com.google.android.gms.tasks.OnCompleteListener
 import com.snotshot.myapplication.databinding.ActivityProfilePageBinding
-import com.snotshot.myapplication.databinding.FragmentProfileBinding
-import com.snotshot.myapplication.models.Course
+import com.snotshot.myapplication.models.*
 import java.io.File
 
 
@@ -75,6 +52,9 @@ class ProfilePageActivity: AppCompatActivity() {
     // for count gpa
     private val gpaPath = "courses"
     lateinit var coursesDatabase: DatabaseReference
+
+    private val usersChatsPath = "users_chats"
+    lateinit var usersChatsDatabase: DatabaseReference
 
     lateinit var storageRef: StorageReference
 
@@ -101,6 +81,7 @@ class ProfilePageActivity: AppCompatActivity() {
         if (!uid.isNullOrEmpty()) {
             database = Firebase.database(url).reference.child(path).child(uid)
             coursesDatabase = Firebase.database(url).reference.child(gpaPath).child(uid)
+            usersChatsDatabase = Firebase.database(url).reference.child(usersChatsPath).child(uid)
         }
 
         val userListener = object : ValueEventListener {
@@ -209,6 +190,33 @@ class ProfilePageActivity: AppCompatActivity() {
             }
         }
         coursesDatabase.addValueEventListener(notesListener)
+
+        var chatUid = ""
+        val fuserUid = FirebaseAuth.getInstance().currentUser!!.uid
+
+        usersChatsDatabase.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for(chatSnapshot in snapshot.children) {
+                    val userChat = chatSnapshot.getValue<UserChat>()
+                    if(userChat!!.contact_uid == fuserUid) {
+                        chatUid = userChat.chat_uid.toString()
+                        break
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+        binding.chatBtn.setOnClickListener{
+            val intent = Intent(this, ChatActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            intent.putExtra("uid", uid)
+            intent.putExtra("chat_uid", chatUid)
+            this.startActivity(intent)
+
+        }
+
     }
 
 
