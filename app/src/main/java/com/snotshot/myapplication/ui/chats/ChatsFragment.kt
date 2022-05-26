@@ -74,16 +74,19 @@ class ChatsFragment : Fragment() {
             textView.text = it
         })
 
-        val firebaseUser = firebaseAuth.currentUser
-        if (firebaseUser != null) {
-            database = Firebase.database(url).reference.child(path).child(firebaseUser.uid)
-        }
 
         recyclerView = binding.chatsList
         recyclerView!!.layoutManager = LinearLayoutManager(binding.root.context)
         val decoration = SpacesItemDecoration(16)
         recyclerView!!.addItemDecoration(decoration)
         chatsList = ArrayList()
+
+
+        val firebaseUser = firebaseAuth.currentUser
+        if (firebaseUser != null) {
+            database = Firebase.database(url).reference.child(path).child(firebaseUser.uid)
+        }
+
 
         val chatsListener = object : ValueEventListener {
             @SuppressLint("ResourceType")

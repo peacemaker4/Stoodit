@@ -84,21 +84,9 @@ class ChatFormActivity: AppCompatActivity() {
             @SuppressLint("ResourceType")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 usersList = ArrayList()
-                val userStartedChats: HashSet<String> = hashSetOf(firebaseUser!!.uid)
-                database.child(usersChatsPath).child(firebaseUser.uid).addValueEventListener(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        for(snap in snapshot.children) {
-                            val conUid = snap.getValue<UserChat>()!!.contact_uid.toString()
-                            userStartedChats.add(conUid)
-                        }
-                    }
-                    override fun onCancelled(error: DatabaseError) {
-                        Log.w(ContentValues.TAG, "Read failed", error.toException())
-                    }
-                })
                 for (userSnapshot in dataSnapshot.children) {
                     val user = userSnapshot.getValue<User>()!!
-                    if(!userStartedChats.contains(user.uid))
+                    if(user.uid != firebaseUser!!.uid)
                         usersList!!.add(user)
                 }
 

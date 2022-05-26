@@ -175,7 +175,7 @@ class ChatActivity: AppCompatActivity() {
 
 
     private fun sendMessage(sender: String, receiver: String, text: String, time: String) {
-        if(chatUid == "null") {
+        if(chatUid == "") {
             chatUid = chatsDatabase.push().key.toString()
             chatsDatabase.child(chatUid).child("correspondent1").setValue(sender)
             chatsDatabase.child(chatUid).child("correspondent2").setValue(receiver)
@@ -207,6 +207,7 @@ class ChatActivity: AppCompatActivity() {
                 Log.w(ContentValues.TAG, "Read failed", error.toException())
             }
         })
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

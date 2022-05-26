@@ -62,12 +62,13 @@ class NewUsersChatAdapter
         val url = "https://studit-b2d9b-default-rtdb.asia-southeast1.firebasedatabase.app"
         val path = "users_chats"
         val database: DatabaseReference = Firebase.database(url).reference.child(path).child(currentUser.uid.toString())
+        val fuserUid = FirebaseAuth.getInstance().currentUser!!.uid
 
         database.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(chatSnapshot in snapshot.children) {
                     val chat = chatSnapshot.getValue<UserChat>()
-                    if(chat!!.contact_uid == FirebaseAuth.getInstance().currentUser!!.uid) {
+                    if(chat!!.contact_uid == fuserUid) {
                         chatUid = chat.chat_uid.toString()
                         break
                     }
