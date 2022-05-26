@@ -4,31 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.notes.NotesFragment">
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="452dp"
-        android:layout_height="234dp"
-        android:background="@color/welcome_page_back"
-        android:src="@drawable/edit_text_border"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+    tools:context=".ui.notes.NotesFragment"
+    android:background="@color/white"
+    >
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profile_image"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:background="@color/welcome_page_btn"
         android:src="@drawable/ic_icon_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
-        android:background="@color/welcome_page_btn"
-        ></com.google.android.material.imageview.ShapeableImageView>
+        app:layout_constraintVertical_bias="0.04000002"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"></com.google.android.material.imageview.ShapeableImageView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/delete_btn"
@@ -46,41 +38,22 @@
         app:layout_constraintStart_toEndOf="@+id/profile_image"
         app:layout_constraintTop_toTopOf="@+id/profile_image" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="Edit"
-        android:textColor="@color/welcome_page_btn"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/text_profile"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="156dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="236dp"
-        android:fontFamily="@font/montserrat_semibold"
+        android:fontFamily="@font/montserrat_bold"
         android:textAlignment="center"
+        android:backgroundTint="@color/light_gray"
         android:textColor="@color/black"
         android:textSize="25sp"
-        android:enabled="false"
-        android:inputType="text"
-        android:hint="Username"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        android:backgroundTint="@color/welcome_page_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/loadingBar"
@@ -94,77 +67,122 @@
         app:layout_constraintStart_toEndOf="@+id/text_profile"
         app:layout_constraintTop_toTopOf="@+id/text_profile" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <TextView
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="year"
+        android:textColor="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="@+id/yearText"
+        app:layout_constraintStart_toStartOf="@+id/yearText"
+        app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="group"
+        android:textColor="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="@+id/groupText"
+        app:layout_constraintStart_toStartOf="@+id/groupText"
+        app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="university"
+        android:textColor="@color/gray"
+        app:layout_constraintBottom_toTopOf="@+id/universityText"
+        app:layout_constraintEnd_toEndOf="@+id/universityText"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="@+id/universityText"
+        app:layout_constraintTop_toBottomOf="@+id/text_email"
+        app:layout_constraintVertical_bias="0.90000003" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="1dp"
+        android:layout_height="36dp"
+        android:background="@color/light_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/universityText"
+        app:layout_constraintEnd_toStartOf="@+id/universityText"
+        app:layout_constraintStart_toEndOf="@+id/yearText"
+        app:layout_constraintTop_toTopOf="@+id/universityText" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="1dp"
+        android:layout_height="36dp"
+        android:background="@color/light_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/universityText"
+        app:layout_constraintEnd_toStartOf="@+id/groupText"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/universityText"
+        app:layout_constraintTop_toTopOf="@+id/universityText" />
+
+    <Spinner
+        android:id="@+id/universityText"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:backgroundTint="@color/light_gray"
+        android:fontFamily="@font/montserrat_bold"
+        android:padding="5dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_profile"
-        app:layout_constraintVertical_bias="0.19999999"
-        >
+        app:layout_constraintVertical_bias="0.15" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/welcome_page_btn"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.19" />
+    <EditText
+        android:id="@+id/groupText"
+        android:layout_width="wrap_content"
+        android:maxWidth="85dp"
+        android:layout_height="35dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:padding="5dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:backgroundTint="@color/light_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/universityText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/universityText"
+        app:layout_constraintTop_toTopOf="@+id/universityText" />
 
-        <EditText
-            android:id="@+id/groupText"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="116dp"
-            android:backgroundTint="@color/welcome_page_btn"
-            android:enabled="false"
-            android:fontFamily="@font/montserrat_semibold"
-            android:hint="Group"
-            android:inputType="text"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent" />
+    <EditText
+        android:id="@+id/yearText"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:backgroundTint="@color/light_gray"
+        android:fontFamily="@font/montserrat_bold"
+        android:maxWidth="25dp"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/universityText"
+        app:layout_constraintEnd_toStartOf="@+id/universityText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/universityText"
+        app:layout_constraintVertical_bias="0.9" />
 
-        <EditText
-            android:id="@+id/yearText"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="116dp"
-            android:backgroundTint="@color/welcome_page_btn"
-            android:enabled="false"
-            android:fontFamily="@font/montserrat_semibold"
-            android:hint="Year"
-            android:inputType="number"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent" />
-    </LinearLayout>
 
     <EditText
         android:id="@+id/descriptionText"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="116dp"
-        android:background="@drawable/rounded_border_gray"
+        android:layout_marginBottom="112dp"
+        android:background="@drawable/rounded_pill_border_gray"
         android:enabled="false"
         android:fontFamily="@font/montserrat_semibold"
         android:hint="Description"
@@ -177,13 +195,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/universityText"
+        app:layout_constraintVertical_bias="0.100000024" />
 
     <Button
         android:id="@+id/saveBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/welcome_page_btn"
+        android:layout_width="150dp"
+        android:layout_height="37dp"
+        android:background="@drawable/rounded_pill"
         android:drawableRight="@drawable/ic_icon_done"
         android:enabled="false"
         android:text="Save"
@@ -191,6 +210,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionText"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintVertical_bias="0.10000000" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

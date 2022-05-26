@@ -111,7 +111,7 @@ class ProfilePageActivity: AppCompatActivity() {
                     binding.loadingBar.visibility = View.GONE
 
                     binding.textProfile.text = user.username
-//                    binding.textEmail.text = user.email
+                    binding.textEmail.text = user.email
 
                     actionBar.title = user.username
 

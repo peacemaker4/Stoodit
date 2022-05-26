@@ -17,6 +17,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/round_back_light_10"
+            android:backgroundTint="@color/lighter_gray"
             android:src="@drawable/ic_icon_arrow_back" />
 
         <TextView
@@ -51,16 +52,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter message"
+            android:hint="Message"
+            android:backgroundTint="@color/light_gray"
             android:id="@+id/user_message"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/send_message_btn"
+            android:fontFamily="@font/montserrat"
+            android:textStyle="bold"
             android:text="send"/>
     </LinearLayout>
 </LinearLayout>

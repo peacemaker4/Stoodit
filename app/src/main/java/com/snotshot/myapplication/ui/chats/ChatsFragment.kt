@@ -96,6 +96,7 @@ class ChatsFragment : Fragment() {
                     val userChat = chatSnapshot.getValue<UserChat>()!!
                     chatsList!!.add(userChat)
                 }
+                chatsList!!.reverse()
                 if (_binding != null) {
                     binding.progressBar.visibility = View.GONE
                     chatsAdapter = ChatsAdapter(binding.root.context, chatsList!!)

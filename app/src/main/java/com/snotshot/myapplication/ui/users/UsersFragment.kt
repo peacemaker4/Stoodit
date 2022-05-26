@@ -93,7 +93,8 @@ class UsersFragment : Fragment() {
                 usersList = ArrayList()
                 for (noteSnapshot in dataSnapshot.children) {
                     val user = noteSnapshot.getValue<User>()!! as User
-                    usersList!!.add(user)
+                    if(!user.uid.equals(firebaseUser!!.uid))
+                        usersList!!.add(user)
                 }
                 searchList!!.addAll(usersList!!)
                 if(_binding != null) {

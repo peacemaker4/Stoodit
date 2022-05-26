@@ -25,6 +25,10 @@
             android:icon="@drawable/ic_menu_users"
             android:title="@string/users" />
         <item
+            android:id="@+id/nav_chats"
+            android:icon="@drawable/ic_chat"
+            android:title="@string/chats" />
+        <item
             android:id="@+id/nav_music"
             android:icon="@drawable/ic_icon_music"
             android:title="@string/music" />
@@ -32,9 +36,6 @@
             android:id="@+id/nav_premium"
             android:icon="@drawable/ic_icon_premium"
             android:title="@string/premium" />
-        <item
-            android:id="@+id/nav_chats"
-            android:icon="@drawable/ic_chat"
-            android:title="@string/chats" />
+
     </group>
 </menu>

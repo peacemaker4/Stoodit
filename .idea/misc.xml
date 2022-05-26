@@ -3,105 +3,107 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable-anydpi-v24/ic_icon_login.xml" value="0.165625" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable-anydpi-v24/ic_icon_tmp.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/blue_border_btn.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/button_border.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/edit_text_border.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/edit_text_border_white.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_add_user.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_delete.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_dt.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_g.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_login.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_logout.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_music.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_premium.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_search.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icon_users.xml" value="0.165625" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_icons8_google_24.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_launcher_background.xml" value="0.264" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_menu_camera.xml" value="0.14947916666666666" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.14947916666666666" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.14947916666666666" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/ic_menu_users.xml" value="0.165625" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/left_message_background.xml" value="0.21875" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/right_message_background.xml" value="0.21875" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/rounded_border.xml" value="0.165625" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/rounded_border_gray.xml" value="0.21875" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/rounded_pill.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/rounded_pill_border_gray.xml" value="0.21875" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/rounded_pill_secondary.xml" value="0.2755208333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/rounded_pill_white.xml" value="0.2755208333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/side_nav_bar.xml" value="0.14947916666666666" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/drawable/transparent.xml" value="0.165625" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_chat.xml" value="0.20260416666666667" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_chat_form.xml" value="0.20260416666666667" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_course_form.xml" value="0.6" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_main.xml" value="0.20729166666666668" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_news.xml" value="0.12454710144927536" />
-        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_note_form.xml" value="0.264" />
-        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_profile_edit.xml" value="0.12613981762917933" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_note_form.xml" value="0.214123006833713" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_profile_edit.xml" value="0.4" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_profile_page.xml" value="0.4" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_web.xml" value="0.12454710144927536" />
-        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_welcome.xml" value="0.25679347826086957" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/activity_welcome.xml" value="0.4" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/app_bar_main.xml" value="0.14895833333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/article_item.xml" value="0.264" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/content_main.xml" value="0.1793478260869565" />
-        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/course_item.xml" value="0.4" />
-        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_courses.xml" value="0.264" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/course_item.xml" value="0.2" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_chats.xml" value="0.20260416666666667" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_courses.xml" value="0.24087591240875914" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_gallery.xml" value="0.14895833333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_music.xml" value="0.22327898550724637" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_notes.xml" value="0.2" />
-        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_premium.xml" value="0.22327898550724637" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_profile.xml" value="0.4" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_slideshow.xml" value="0.14895833333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/fragment_users.xml" value="0.13269927536231885" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/item_spinner.xml" value="0.12454710144927536" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/message_item_left.xml" value="0.4" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/message_item_right.xml" value="0.4" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/nav_header_main.xml" value="0.264" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/new_chat_item.xml" value="0.20260416666666667" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/note_item.xml" value="0.22073578595317725" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/layout/user_item.xml" value="0.4" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/menu/activity_main_drawer.xml" value="0.14895833333333333" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/menu/main.xml" value="0.14895833333333333" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/menu/note.xml" value="0.2713541666666667" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/menu/note_menu.xml" value="0.136" />
+        <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/menu/search.xml" value="0.259375" />
         <entry key="..\:/Bek/Programming/AndroidStudioProjects/Studit/app/src/main/res/mipmap-anydpi-v26/ic_launcher_stoodit_clip.xml" value="0.2755208333333333" />
-        <entry key="..\:/Users/77478/Stoodit1/app/src/main/res/drawable/ic_baseline_horizontal_rule_24.xml" value="0.1915" />
-        <entry key="..\:/Users/77478/Stoodit1/app/src/main/res/drawable/ic_menu_home.xml" value="0.1915" />
-        <entry key="..\:/Users/77478/Stoodit1/app/src/main/res/drawable/rounded_border_gray.xml" value="0.1825" />
-        <entry key="..\:/Users/77478/Stoodit1/app/src/main/res/layout/activity_main.xml" value="0.21829710144927536" />
-        <entry key="..\:/Users/77478/Stoodit1/app/src/main/res/layout/activity_register.xml" value="0.25" />
-        <entry key="..\:/Users/77478/Stoodit1/app/src/main/res/layout/fragment_home.xml" value="0.33" />
-        <entry key="..\:/Users/77478/Stoodit1/app/src/main/res/layout/fragment_music.xml" value="0.33" />
-        <entry key="..\:/Users/77478/Stoodit1/app/src/main/res/layout/fragment_notes.xml" value="0.18819655521783182" />
-        <entry key="..\:/Users/77478/Stoodit1/app/src/main/res/layout/fragment_premium.xml" value="0.33" />
-        <entry key="..\:/Users/77478/Stoodit1/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
-        <entry key="..\:/Users/77478/Stoodit1/app/src/main/res/layout/fragment_users.xml" value="0.18819655521783182" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/drawable/ic_icon_contact.xml" value="0.1605" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/drawable/ic_icon_find.xml" value="0.1605" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/drawable/ic_icon_search.xml" value="0.1605" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2435" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/drawable/ic_launcher_stoodit_clip_foreground.xml" value="0.215" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/drawable/ic_row_right.xml" value="0.1605" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/drawable/left_message_background.xml" value="0.1605" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/drawable/right_message_background.xml" value="0.1605" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/drawable/round_back_light_10.xml" value="0.1605" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/drawable/sign_in_btn_back.xml" value="0.2575" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/font/.xml" value="0.284375" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/font/montserrat_subrayada.xml" value="0.20364583333333333" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/activity_chat.xml" value="0.2513586956521739" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/activity_chat_form.xml" value="0.264" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/activity_course_form.xml" value="0.264" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/activity_login.xml" value="0.23505434782608695" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/activity_news.xml" value="0.2513586956521739" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/activity_note_form.xml" value="0.23233695652173914" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/activity_profile_edit.xml" value="0.12360688956433637" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/activity_profile_page.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/activity_register.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/activity_web.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/activity_welcome.xml" value="0.264" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/app_bar_main.xml" value="0.24954710144927536" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/article_item.xml" value="0.25271739130434784" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/chat_item.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/content_main.xml" value="0.23233695652173914" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/course_item.xml" value="0.25271739130434784" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/fragment_chat.xml" value="0.2513586956521739" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/fragment_chats.xml" value="0.264" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/fragment_courses.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/fragment_gallery.xml" value="0.24954710144927536" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/fragment_home.xml" value="0.24954710144927536" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/fragment_learn.xml" value="0.2078125" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/fragment_messages.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/fragment_notes.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/fragment_profile.xml" value="0.2536231884057971" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/fragment_slideshow.xml" value="0.24954710144927536" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/fragment_users.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/item_spinner.xml" value="0.25271739130434784" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/message_item.xml" value="0.2513586956521739" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/message_item_left.xml" value="0.1921875" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/message_item_right.xml" value="0.2513586956521739" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/nav_header_main.xml" value="0.24954710144927536" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/new_chat.xml" value="0.2513586956521739" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/note_item.xml" value="0.25271739130434784" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/layout/user_item.xml" value="0.2513586956521739" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/menu/activity_main_drawer.xml" value="0.2078125" />
         <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/menu/main.xml" value="0.2078125" />
-        <entry key="..\:/Users/Rick/Documents/GitHub/Stoodit/app/src/main/res/menu/note.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

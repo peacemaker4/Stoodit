@@ -104,7 +104,7 @@ class ProfileEditActivity: AppCompatActivity() {
         )
 
         spinnerAdapter = CustomSpinnerAdapter(this, universitiesList)
-        binding.spinner.adapter = spinnerAdapter
+        binding.universityText.adapter = spinnerAdapter
 
         val userListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -115,7 +115,7 @@ class ProfileEditActivity: AppCompatActivity() {
                 binding.saveBtn.isEnabled = true
                 binding.textProfile.isEnabled = true
                 binding.descriptionText.isEnabled = true
-                binding.spinner.isEnabled = true
+                binding.universityText.isEnabled = true
                 binding.groupText.isEnabled = true
                 binding.yearText.isEnabled = true
                 binding.groupText.setText(user.group)
@@ -129,7 +129,7 @@ class ProfileEditActivity: AppCompatActivity() {
                     }
                     id++
                 }
-                binding.spinner.setSelection(id)
+                binding.universityText.setSelection(id)
                 if(!user.picture.isNullOrBlank()){
                     binding.deleteBtn.visibility = View.VISIBLE
                 }
@@ -163,7 +163,7 @@ class ProfileEditActivity: AppCompatActivity() {
 
     private fun validateData(){
         username = binding.textProfile.text.toString().trim()
-        university = (binding.spinner.selectedItem as University).name
+        university = (binding.universityText.selectedItem as University).name
         group = binding.groupText.text.toString().trim()
         year = binding.yearText.text.toString().trim()
         description = binding.descriptionText.text.toString().trim()
@@ -184,10 +184,7 @@ class ProfileEditActivity: AppCompatActivity() {
         val updated_user = User(firebaseUser.uid, username, firebaseUser.email, university, year, group, description, user.picture)
 
         database.setValue(updated_user).addOnSuccessListener { e->
-            var toast = Toast.makeText(this, "User info updated!", Toast.LENGTH_SHORT)
-            var view = toast.view
-            view?.setBackgroundColor(Color.parseColor("#009afe"))
-            toast.show()
+            Toast.makeText(this, "User info updated!", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener{ e->
             Toast.makeText(this, "Error while creating the user: $e", Toast.LENGTH_SHORT).show()
         }

@@ -54,6 +54,7 @@ class ChatFormActivity: AppCompatActivity() {
     private var recyclerView: RecyclerView? = null
 
     private var usersList: ArrayList<User>? = null
+    private var searchList: ArrayList<User>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +65,6 @@ class ChatFormActivity: AppCompatActivity() {
         actionBar.title = "Start chating"
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.setDisplayShowHomeEnabled(true)
-
 
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
@@ -78,21 +78,25 @@ class ChatFormActivity: AppCompatActivity() {
         recyclerView!!.layoutManager = LinearLayoutManager(binding.root.context)
 
         usersList = ArrayList()
+        searchList = ArrayList()
 
         database.child(usersPath).addValueEventListener(object : ValueEventListener {
 
             @SuppressLint("ResourceType")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 usersList = ArrayList()
+                searchList = ArrayList()
+
                 for (userSnapshot in dataSnapshot.children) {
                     val user = userSnapshot.getValue<User>()!!
                     if(user.uid != firebaseUser!!.uid)
                         usersList!!.add(user)
                 }
+                searchList!!.addAll(usersList!!)
 
                 if (binding != null) {
                     binding.progressBar.visibility = View.GONE
-                    usersAdapter = NewUsersChatAdapter(binding.root.context, usersList!!)
+                    usersAdapter = NewUsersChatAdapter(binding.root.context, searchList!!)
                     recyclerView!!.adapter = usersAdapter
 
                 }
@@ -115,6 +119,42 @@ class ChatFormActivity: AppCompatActivity() {
         else{
             binding.root.context.startActivity(Intent(binding.root.context, LoginActivity::class.java))
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.search, menu)
+        val item = menu?.findItem(R.id.action_search)
+        val searchView = item?.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean{
+                searchList!!.clear()
+                val searchText = newText!!.toLowerCase(Locale.getDefault())
+                if(searchText.isNotEmpty()){
+                    usersList!!.forEach{
+                        if(it.username!!.toLowerCase(Locale.getDefault()).contains(searchText) || it.email!!.toLowerCase(
+                                Locale.getDefault()).contains(searchText)){
+                            searchList!!.add(it)
+                        }
+                    }
+                    recyclerView!!.adapter!!.notifyDataSetChanged()
+                }
+                else{
+                    searchList!!.clear()
+                    searchList!!.addAll(usersList!!)
+                    recyclerView!!.adapter!!.notifyDataSetChanged()
+                }
+
+                return false
+            }
+
+        })
+
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onSupportNavigateUp(): Boolean {

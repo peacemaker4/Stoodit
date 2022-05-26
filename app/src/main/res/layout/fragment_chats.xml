@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.98"
         android:backgroundTint="@color/welcome_page_btn"
         app:borderWidth="0dp"
-        app:srcCompat="@drawable/ic_icon_add"
+        app:srcCompat="@drawable/ic_icon_edit"
         app:tint="@color/white"
         />
 
