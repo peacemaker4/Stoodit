@@ -20,6 +20,8 @@ Stoodit - Android Mobile Application designed to make students life easier
 - Users: search, view other users profile page
 - Chats - chat with app users
 
+[Latest Release](https://github.com/peacemaker4/Stoodit/releases/tag/0.9)
+
 ## Links
 - [Trello](https://trello.com/b/ridfjxJW/stoodit)
 - [Presentation in Canva](https://www.canva.com/design/DAEwWOjUPI8/WtcNRI0kNFGKFbw56TLlwg/edit?utm_content=DAEwWOjUPI8&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=sharebutton)
