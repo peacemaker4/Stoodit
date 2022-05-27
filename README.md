@@ -20,6 +20,7 @@ Stoodit - Android Mobile Application designed to make students life easier
 - Users: search, view other users profile page
 - Chats - chat with app users
 
+## Releases
 [Latest Release](https://github.com/peacemaker4/Stoodit/releases/tag/0.9)
 
 ## Links
