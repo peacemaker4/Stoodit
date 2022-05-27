@@ -3,7 +3,7 @@ Stoodit - Android Mobile Application designed to make students life easier
 
 ## Developed by SnotShot team 
 - Burkitbaev Nurbay - Project Manager, Designer, Front End Dev(https://www.linkedin.com/in/nurbay-burkitbaev-803a5123b/).
-- Ismagulov Elaman - Full Stack Dev(https://www.linkedin.com/in/nurbay-burkitbaev-803a5123b/).
+- Ismagulov Elaman - Full Stack Dev([https://www.linkedin.com/in/nurbay-burkitbaev-803a5123b/](https://www.linkedin.com/in/%D0%B5%D0%BB%D0%B0%D0%BC%D0%B0%D0%BD-%D0%B8%D1%81%D0%BC%D0%B0%D0%B3%D1%83%D0%BB%D0%BE%D0%B2-678037240/)).
 - Esmagambetov Bek - Full Stack Dev(https://www.linkedin.com/in/nurbay-burkitbaev-803a5123b/).
 
 ## Tech Stack 
